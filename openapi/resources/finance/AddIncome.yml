@@ -1,0 +1,22 @@
+post:
+  tags:
+    - Finance
+  summary: Добавяне на приход
+  description: Добавя приход
+  operationId: AddIncome
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - value
+          properties:
+            value:
+              type: number
+              example: 2300.20
+  responses:
+    '200':
+      description: OK
+    '500':
+      description: INTERNAL_SERVER_ERROR

@@ -1,0 +1,43 @@
+openapi: 3.0.1
+info:
+  title: Finance App
+  description: Finnance application
+  termsOfService: 'http://swagger.io/terms/'
+  contact:
+    name: Kaloyan Velichkov
+    email: kaloyanvellichkov@gmail.com
+  license:
+    name: Apache 2.0
+    url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
+  version: 1.0.3
+servers:
+  - url: 'https://financeapp-be.herokuapp.com/'
+tags:
+  - name: Finance
+    description: Provides a set of functions to interact with the finance data
+  - name: User
+    description: Provides a set of functions to manage the user data and session
+paths:
+  /income/add:
+    post:
+      tags:
+        - Finance
+      summary: Добавяне на приход
+      description: Добавя приход
+      operationId: AddIncome
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - value
+              properties:
+                value:
+                  type: number
+                  example: 2300.2
+      responses:
+        '200':
+          description: OK
+        '500':
+          description: INTERNAL_SERVER_ERROR

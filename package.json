@@ -4,11 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "build-openapi": "swagger-cli bundle openapi/index.yml --outfile openapi/openapi.yml --type yaml"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "express": "^4.18.1"
+  },
+  "devDependencies": {
+    "swagger-cli": "^4.0.4"
   }
 }
