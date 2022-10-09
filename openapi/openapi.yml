@@ -53,6 +53,41 @@ paths:
           description: OK
         '500':
           description: INTERNAL_SERVER_ERROR
+  /income/update:
+    put:
+      tags:
+        - Finance
+      summary: Редакторане на приход
+      description: Редактира приход
+      operationId: EditIncome
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - userId
+                - incomeId
+              properties:
+                userId:
+                  type: string
+                incomeId:
+                  type: string
+                date:
+                  type: string
+                  format: date-time
+                  example: '2022-10-09T13:50:00.000Z'
+                value:
+                  type: number
+                  example: 150.8
+                comment:
+                  type: string
+                  example: Гориво
+      responses:
+        '200':
+          description: OK
+        '500':
+          description: INTERNAL_SERVER_ERROR
   /income/delete:
     delete:
       tags:
