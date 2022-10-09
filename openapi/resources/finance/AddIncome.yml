@@ -12,9 +12,18 @@ post:
           required:
             - value
           properties:
+            userId:
+              type: string
+            date:
+              type: string
+              format: date-time
+              example: "2022-10-09T13:50:00.000Z"
             value:
               type: number
               example: 2300.20
+            comment:
+              type: string
+              example: "Вечеря"
   responses:
     '200':
       description: OK
