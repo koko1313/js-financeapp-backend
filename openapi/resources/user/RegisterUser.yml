@@ -1,0 +1,34 @@
+post:
+  tags:
+    - User
+  summary: Регистриране на потребител
+  description: Регистрира разход
+  operationId: RegisterUser
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - email
+            - firstName
+            - lastName
+            - password
+          properties:
+            email:
+              type: string
+              example: "example@mail.com"
+            firstName:
+              type: string
+              example: "Pesho"
+            lastName:
+              type: string
+              example: "Shvepsa"
+            password:
+              type: string
+              example: "my_password_123"
+  responses:
+    '200':
+      description: OK
+    '500':
+      description: INTERNAL_SERVER_ERROR

@@ -42,3 +42,8 @@ paths:
     $ref: './resources/finance/expense/UpdateExpense.yml'
   '/expense/delete':
     $ref: './resources/finance/expense/DeleteExpense.yml'
+
+  '/user/register':
+    $ref: './resources/user/RegisterUser.yml'
+  '/user/login':
+    $ref: './resources/user/LoginUser.yml'
