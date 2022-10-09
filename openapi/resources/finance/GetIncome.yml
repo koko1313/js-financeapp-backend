@@ -1,0 +1,56 @@
+get:
+  tags:
+    - Finance
+  summary: Вземане на приход
+  description: Взема приход
+  operationId: GetIncome
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - userId
+          properties:
+            userId:
+              type: string
+            fromDate:
+              type: string
+              format: date-time
+              example: "2022-10-01T13:50:00.000Z"
+            toDate:
+              type: string
+              format: date-time
+              example: "2022-10-31T13:50:00.000Z"
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              type: object
+              required:
+                - id
+                - userId
+                - date
+                - value
+                - comment
+              properties:
+                id:
+                  type: string
+                userId:
+                  type: string
+                date:
+                  type: string
+                  format: date-time
+                  example: "2022-10-09T13:50:00.000Z"
+                value:
+                  type: number
+                  example: 2300.20
+                comment:
+                  type: string
+                  example: "Вечеря"
+    '500':
+      description: INTERNAL_SERVER_ERROR
