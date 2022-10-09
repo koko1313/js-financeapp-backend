@@ -18,6 +18,9 @@ tags:
   - name: Income
     description: 'Provides a set of functions to interact with the income data'
 
+  - name: Expense
+    description: 'Provides a set of functions to interact with the expense data'
+
   - name: User
     description: 'Provides a set of functions to manage the user data and session'
 
@@ -30,3 +33,6 @@ paths:
     $ref: './resources/finance/income/EditIncome.yml'
   '/income/delete':
     $ref: './resources/finance/income/DeleteIncome.yml'
+
+  'expense/get':
+    $ref: './resources/finance/expense/GetExpense.yml'

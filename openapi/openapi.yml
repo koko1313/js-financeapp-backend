@@ -15,6 +15,8 @@ servers:
 tags:
   - name: Income
     description: Provides a set of functions to interact with the income data
+  - name: Expense
+    description: Provides a set of functions to interact with the expense data
   - name: User
     description: Provides a set of functions to manage the user data and session
 paths:
@@ -168,5 +170,62 @@ paths:
       responses:
         '200':
           description: OK
+        '500':
+          description: INTERNAL_SERVER_ERROR
+  expense/get:
+    get:
+      tags:
+        - Expense
+      summary: Вземане на разход
+      description: Взема разход
+      operationId: GetExpense
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - userId
+              properties:
+                userId:
+                  type: string
+                fromDate:
+                  type: string
+                  format: date-time
+                  example: '2022-10-01T13:50:00.000Z'
+                toDate:
+                  type: string
+                  format: date-time
+                  example: '2022-10-31T13:50:00.000Z'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  required:
+                    - id
+                    - userId
+                    - date
+                    - amount
+                    - comment
+                  properties:
+                    id:
+                      type: string
+                    userId:
+                      type: string
+                    date:
+                      type: string
+                      format: date-time
+                      example: '2022-10-09T13:50:00.000Z'
+                    amount:
+                      type: number
+                      example: 2300.2
+                    comment:
+                      type: string
+                      example: Вечеря
         '500':
           description: INTERNAL_SERVER_ERROR
