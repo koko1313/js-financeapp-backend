@@ -34,5 +34,5 @@ paths:
   '/income/delete':
     $ref: './resources/finance/income/DeleteIncome.yml'
 
-  'expense/get':
+  '/expense/get':
     $ref: './resources/finance/expense/GetExpense.yml'

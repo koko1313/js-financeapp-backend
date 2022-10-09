@@ -172,7 +172,7 @@ paths:
           description: OK
         '500':
           description: INTERNAL_SERVER_ERROR
-  expense/get:
+  /expense/get:
     get:
       tags:
         - Expense
