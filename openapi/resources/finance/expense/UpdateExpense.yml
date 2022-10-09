@@ -10,12 +10,13 @@ put:
         schema:
           type: object
           required:
+            - id
             - userId
-            - expenseId
           properties:
-            userId:
+            id:
               type: string
-            expenseId:
+              description: Expense id
+            userId:
               type: string
             date:
               type: string

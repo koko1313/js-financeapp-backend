@@ -11,11 +11,12 @@ delete:
           type: object
           required:
             - userId
-            - expenseId
+            - id
           properties:
-            userId:
+            id:
               type: string
-            expenseId:
+              description: Expense id
+            userId:
               type: string
   responses:
     '200':

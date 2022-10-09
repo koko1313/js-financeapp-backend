@@ -1,4 +1,4 @@
-post:
+put:
   tags:
     - User
   summary: Редакторане на потребител
@@ -10,10 +10,11 @@ post:
         schema:
           type: object
           required:
-            - userId
+            - id
           properties:
-            userId:
+            id:
               type: string
+              description: User id
             email:
               type: string
               example: "example@mail.com"

@@ -125,12 +125,13 @@ paths:
             schema:
               type: object
               required:
+                - id
                 - userId
-                - incomeId
               properties:
-                userId:
+                id:
                   type: string
-                incomeId:
+                  description: Income id
+                userId:
                   type: string
                 date:
                   type: string
@@ -160,12 +161,13 @@ paths:
             schema:
               type: object
               required:
+                - id
                 - userId
-                - incomeId
               properties:
-                userId:
+                id:
                   type: string
-                incomeId:
+                  description: Income id
+                userId:
                   type: string
       responses:
         '200':
@@ -277,12 +279,13 @@ paths:
             schema:
               type: object
               required:
+                - id
                 - userId
-                - expenseId
               properties:
-                userId:
+                id:
                   type: string
-                expenseId:
+                  description: Expense id
+                userId:
                   type: string
                 date:
                   type: string
@@ -313,11 +316,12 @@ paths:
               type: object
               required:
                 - userId
-                - expenseId
+                - id
               properties:
-                userId:
+                id:
                   type: string
-                expenseId:
+                  description: Expense id
+                userId:
                   type: string
       responses:
         '200':
@@ -409,7 +413,7 @@ paths:
         '500':
           description: INTERNAL_SERVER_ERROR
   /user/update:
-    post:
+    put:
       tags:
         - User
       summary: Редакторане на потребител
@@ -421,10 +425,11 @@ paths:
             schema:
               type: object
               required:
-                - userId
+                - id
               properties:
-                userId:
+                id:
                   type: string
+                  description: User id
                 email:
                   type: string
                   example: example@mail.com

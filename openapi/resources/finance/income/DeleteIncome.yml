@@ -10,12 +10,13 @@ delete:
         schema:
           type: object
           required:
+            - id
             - userId
-            - incomeId
           properties:
-            userId:
+            id:
               type: string
-            incomeId:
+              description: Income id
+            userId:
               type: string
   responses:
     '200':
