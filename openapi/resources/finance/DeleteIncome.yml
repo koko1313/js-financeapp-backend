@@ -1,0 +1,24 @@
+delete:
+  tags:
+    - Finance
+  summary: Изтриване на приход
+  description: Изтрива приход
+  operationId: DeleteIncome
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - userId
+            - incomeId
+          properties:
+            userId:
+              type: string
+            incomeId:
+              type: string
+  responses:
+    '200':
+      description: OK
+    '500':
+      description: INTERNAL_SERVER_ERROR

@@ -24,3 +24,5 @@ tags:
 paths:
   '/income/add':
     $ref: './resources/finance/AddIncome.yml'
+  '/income/delete':
+    $ref: './resources/finance/DeleteIncome.yml'

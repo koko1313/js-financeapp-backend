@@ -10,7 +10,10 @@ post:
         schema:
           type: object
           required:
+            - userId
+            - date
             - value
+            - comment
           properties:
             userId:
               type: string
