@@ -36,3 +36,5 @@ paths:
 
   '/expense/get':
     $ref: './resources/finance/expense/GetExpense.yml'
+  '/expense/add':
+    $ref: './resources/finance/expense/AddExpense.yml'

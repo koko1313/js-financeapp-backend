@@ -1,0 +1,34 @@
+post:
+  tags:
+    - Expense
+  summary: Добавяне на разход
+  description: Добавя разход
+  operationId: AddExpense
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - userId
+            - date
+            - amount
+            - comment
+          properties:
+            userId:
+              type: string
+            date:
+              type: string
+              format: date-time
+              example: "2022-10-09T13:50:00.000Z"
+            amount:
+              type: number
+              example: 2300.20
+            comment:
+              type: string
+              example: "Вечеря"
+  responses:
+    '200':
+      description: OK
+    '500':
+      description: INTERNAL_SERVER_ERROR
