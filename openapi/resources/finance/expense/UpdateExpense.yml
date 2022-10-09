@@ -11,11 +11,11 @@ put:
           type: object
           required:
             - userId
-            - incomeId
+            - expenseId
           properties:
             userId:
               type: string
-            incomeId:
+            expenseId:
               type: string
             date:
               type: string
