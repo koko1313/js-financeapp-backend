@@ -23,10 +23,10 @@ tags:
 
 paths:
   '/income/get':
-    $ref: './resources/finance/GetIncome.yml'
+    $ref: './resources/finance/income/GetIncome.yml'
   '/income/add':
-    $ref: './resources/finance/AddIncome.yml'
+    $ref: './resources/finance/income/AddIncome.yml'
   '/income/update':
-    $ref: './resources/finance/EditIncome.yml'
+    $ref: './resources/finance/income/EditIncome.yml'
   '/income/delete':
-    $ref: './resources/finance/DeleteIncome.yml'
+    $ref: './resources/finance/income/DeleteIncome.yml'
