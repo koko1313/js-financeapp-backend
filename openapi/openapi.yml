@@ -299,3 +299,28 @@ paths:
           description: OK
         '500':
           description: INTERNAL_SERVER_ERROR
+  /expense/delete:
+    delete:
+      tags:
+        - Expense
+      summary: Изтриване на разход
+      description: Изтрива разход
+      operationId: DeleteExpense
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - userId
+                - expenseId
+              properties:
+                userId:
+                  type: string
+                expenseId:
+                  type: string
+      responses:
+        '200':
+          description: OK
+        '500':
+          description: INTERNAL_SERVER_ERROR
