@@ -58,7 +58,7 @@ paths:
                     - id
                     - userId
                     - date
-                    - value
+                    - amount
                     - comment
                   properties:
                     id:
@@ -69,7 +69,7 @@ paths:
                       type: string
                       format: date-time
                       example: '2022-10-09T13:50:00.000Z'
-                    value:
+                    amount:
                       type: number
                       example: 2300.2
                     comment:
@@ -92,7 +92,7 @@ paths:
               required:
                 - userId
                 - date
-                - value
+                - amount
                 - comment
               properties:
                 userId:
@@ -101,7 +101,7 @@ paths:
                   type: string
                   format: date-time
                   example: '2022-10-09T13:50:00.000Z'
-                value:
+                amount:
                   type: number
                   example: 2300.2
                 comment:
@@ -136,7 +136,7 @@ paths:
                   type: string
                   format: date-time
                   example: '2022-10-09T13:50:00.000Z'
-                value:
+                amount:
                   type: number
                   example: 150.8
                 comment:

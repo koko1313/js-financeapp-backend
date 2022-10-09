@@ -12,7 +12,7 @@ post:
           required:
             - userId
             - date
-            - value
+            - amount
             - comment
           properties:
             userId:
@@ -21,7 +21,7 @@ post:
               type: string
               format: date-time
               example: "2022-10-09T13:50:00.000Z"
-            value:
+            amount:
               type: number
               example: 2300.20
             comment:
