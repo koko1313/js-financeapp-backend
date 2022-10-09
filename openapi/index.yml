@@ -30,7 +30,7 @@ paths:
   '/income/add':
     $ref: './resources/finance/income/AddIncome.yml'
   '/income/update':
-    $ref: './resources/finance/income/EditIncome.yml'
+    $ref: './resources/finance/income/UpdateIncome.yml'
   '/income/delete':
     $ref: './resources/finance/income/DeleteIncome.yml'
 
@@ -39,4 +39,4 @@ paths:
   '/expense/add':
     $ref: './resources/finance/expense/AddExpense.yml'
   '/expense/update':
-    $ref: './resources/finance/expense/EditExpense.yml'
+    $ref: './resources/finance/expense/UpdateExpense.yml'

@@ -1,9 +1,9 @@
 put:
   tags:
-    - Expense
-  summary: Редакторане на разход
-  description: Редактира разход
-  operationId: EditExpense
+    - Income
+  summary: Редакторане на приход
+  description: Редактира приход
+  operationId: UpdateIncome
   requestBody:
     content:
       application/json:
