@@ -15,8 +15,8 @@ servers:
   - url: 'https://financeapp-be.herokuapp.com/'
 
 tags:
-  - name: Finance
-    description: 'Provides a set of functions to interact with the finance data'
+  - name: Income
+    description: 'Provides a set of functions to interact with the income data'
 
   - name: User
     description: 'Provides a set of functions to manage the user data and session'

@@ -1,6 +1,6 @@
 post:
   tags:
-    - Finance
+    - Income
   summary: Добавяне на приход
   description: Добавя приход
   operationId: AddIncome

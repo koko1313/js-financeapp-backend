@@ -1,6 +1,6 @@
 delete:
   tags:
-    - Finance
+    - Income
   summary: Изтриване на приход
   description: Изтрива приход
   operationId: DeleteIncome

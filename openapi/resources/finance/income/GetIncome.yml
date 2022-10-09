@@ -1,6 +1,6 @@
 get:
   tags:
-    - Finance
+    - Income
   summary: Вземане на приход
   description: Взема приход
   operationId: GetIncome

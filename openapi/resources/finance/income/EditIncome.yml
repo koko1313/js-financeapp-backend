@@ -1,6 +1,6 @@
 put:
   tags:
-    - Finance
+    - Income
   summary: Редакторане на приход
   description: Редактира приход
   operationId: EditIncome

@@ -13,15 +13,15 @@ info:
 servers:
   - url: 'https://financeapp-be.herokuapp.com/'
 tags:
-  - name: Finance
-    description: Provides a set of functions to interact with the finance data
+  - name: Income
+    description: Provides a set of functions to interact with the income data
   - name: User
     description: Provides a set of functions to manage the user data and session
 paths:
   /income/get:
     get:
       tags:
-        - Finance
+        - Income
       summary: Вземане на приход
       description: Взема приход
       operationId: GetIncome
@@ -78,7 +78,7 @@ paths:
   /income/add:
     post:
       tags:
-        - Finance
+        - Income
       summary: Добавяне на приход
       description: Добавя приход
       operationId: AddIncome
@@ -113,7 +113,7 @@ paths:
   /income/update:
     put:
       tags:
-        - Finance
+        - Income
       summary: Редакторане на приход
       description: Редактира приход
       operationId: EditIncome
@@ -148,7 +148,7 @@ paths:
   /income/delete:
     delete:
       tags:
-        - Finance
+        - Income
       summary: Изтриване на приход
       description: Изтрива приход
       operationId: DeleteIncome
