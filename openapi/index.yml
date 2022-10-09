@@ -47,3 +47,5 @@ paths:
     $ref: './resources/user/RegisterUser.yml'
   '/user/login':
     $ref: './resources/user/LoginUser.yml'
+  '/user/update':
+    $ref: './resources/user/UpdateUser.yml'

@@ -408,3 +408,37 @@ paths:
                     example: Shvepsa
         '500':
           description: INTERNAL_SERVER_ERROR
+  /user/update:
+    post:
+      tags:
+        - User
+      summary: Редакторане на потребител
+      description: Редактира разход
+      operationId: UpdateUser
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - userId
+              properties:
+                userId:
+                  type: string
+                email:
+                  type: string
+                  example: example@mail.com
+                firstName:
+                  type: string
+                  example: Pesho
+                lastName:
+                  type: string
+                  example: Shvepsa
+                password:
+                  type: string
+                  example: my_password_123
+      responses:
+        '200':
+          description: OK
+        '500':
+          description: INTERNAL_SERVER_ERROR
