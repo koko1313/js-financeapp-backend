@@ -26,7 +26,7 @@ post:
               example: 2300.20
             comment:
               type: string
-              example: "Вечеря"
+              example: "Заплата"
   responses:
     '200':
       description: OK

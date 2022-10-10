@@ -2,7 +2,7 @@ post:
   tags:
     - User
   summary: Регистриране на потребител
-  description: Регистрира разход
+  description: Регистрира потребител
   operationId: RegisterUser
   requestBody:
     content:

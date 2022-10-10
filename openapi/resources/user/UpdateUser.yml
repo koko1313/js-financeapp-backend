@@ -2,7 +2,7 @@ put:
   tags:
     - User
   summary: Редакторане на потребител
-  description: Редактира разход
+  description: Редактира потребител
   operationId: UpdateUser
   requestBody:
     content:

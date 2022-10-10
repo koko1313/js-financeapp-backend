@@ -2,7 +2,7 @@ post:
   tags:
     - User
   summary: Логване на потребител
-  description: Логва разход
+  description: Логва потребител
   operationId: LoginUser
   requestBody:
     content:

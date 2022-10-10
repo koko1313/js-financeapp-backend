@@ -106,7 +106,7 @@ paths:
                   example: 2300.2
                 comment:
                   type: string
-                  example: Вечеря
+                  example: Заплата
       responses:
         '200':
           description: OK
@@ -139,10 +139,10 @@ paths:
                   example: '2022-10-09T13:50:00.000Z'
                 amount:
                   type: number
-                  example: 150.8
+                  example: 600.8
                 comment:
                   type: string
-                  example: Гориво
+                  example: Продадох си телефона
       responses:
         '200':
           description: OK
@@ -333,7 +333,7 @@ paths:
       tags:
         - User
       summary: Регистриране на потребител
-      description: Регистрира разход
+      description: Регистрира потребител
       operationId: RegisterUser
       requestBody:
         content:
@@ -368,7 +368,7 @@ paths:
       tags:
         - User
       summary: Логване на потребител
-      description: Логва разход
+      description: Логва потребител
       operationId: LoginUser
       requestBody:
         content:
@@ -417,7 +417,7 @@ paths:
       tags:
         - User
       summary: Редакторане на потребител
-      description: Редактира разход
+      description: Редактира потребител
       operationId: UpdateUser
       requestBody:
         content:
