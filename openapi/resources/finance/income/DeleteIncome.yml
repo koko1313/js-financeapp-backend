@@ -4,20 +4,13 @@ delete:
   summary: Изтриване на приход
   description: Изтрива приход
   operationId: DeleteIncome
-  requestBody:
-    content:
-      application/json:
-        schema:
-          type: object
-          required:
-            - id
-            - userId
-          properties:
-            id:
-              type: string
-              description: Income id
-            userId:
-              type: string
+  parameters:
+    - in: path
+      name: id
+      required: true
+      schema:
+        type: string
+      description: Income id
   responses:
     '200':
       description: OK

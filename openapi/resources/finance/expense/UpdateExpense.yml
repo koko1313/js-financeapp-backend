@@ -4,20 +4,19 @@ put:
   summary: Редакторане на разход
   description: Редактира разход
   operationId: UpdateExpense
+  parameters:
+    - in: path
+      name: id
+      required: true
+      schema:
+        type: string
+      description: Expense id
   requestBody:
     content:
       application/json:
         schema:
           type: object
-          required:
-            - id
-            - userId
           properties:
-            id:
-              type: string
-              description: Expense id
-            userId:
-              type: string
             date:
               type: string
               format: date-time

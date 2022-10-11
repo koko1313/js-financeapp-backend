@@ -4,17 +4,19 @@ put:
   summary: Редакторане на потребител
   description: Редактира потребител
   operationId: UpdateUser
+  parameters:
+    - in: path
+      name: id
+      required: true
+      schema:
+        type: string
+      description: User id
   requestBody:
     content:
       application/json:
         schema:
           type: object
-          required:
-            - id
           properties:
-            id:
-              type: string
-              description: User id
             email:
               type: string
               example: "example@mail.com"

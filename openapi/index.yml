@@ -25,27 +25,27 @@ tags:
     description: 'Provides a set of functions to manage the user data and session'
 
 paths:
-  '/income/get':
+  '/income/get/{id}':
     $ref: './resources/finance/income/GetIncome.yml'
   '/income/add':
     $ref: './resources/finance/income/AddIncome.yml'
-  '/income/update':
+  '/income/update/{id}':
     $ref: './resources/finance/income/UpdateIncome.yml'
-  '/income/delete':
+  '/income/delete/{id}':
     $ref: './resources/finance/income/DeleteIncome.yml'
 
-  '/expense/get':
+  '/expense/get/{id}':
     $ref: './resources/finance/expense/GetExpense.yml'
   '/expense/add':
     $ref: './resources/finance/expense/AddExpense.yml'
-  '/expense/update':
+  '/expense/update/{id}':
     $ref: './resources/finance/expense/UpdateExpense.yml'
-  '/expense/delete':
+  '/expense/delete/{id}':
     $ref: './resources/finance/expense/DeleteExpense.yml'
 
   '/user/register':
     $ref: './resources/user/RegisterUser.yml'
   '/user/login':
     $ref: './resources/user/LoginUser.yml'
-  '/user/update':
+  '/user/update/{id}':
     $ref: './resources/user/UpdateUser.yml'

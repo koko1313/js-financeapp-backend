@@ -4,24 +4,25 @@ get:
   summary: Вземане на приход
   description: Взема приход
   operationId: GetIncome
-  requestBody:
-    content:
-      application/json:
-        schema:
-          type: object
-          required:
-            - userId
-          properties:
-            userId:
-              type: string
-            fromDate:
-              type: string
-              format: date-time
-              example: "2022-10-01T13:50:00.000Z"
-            toDate:
-              type: string
-              format: date-time
-              example: "2022-10-31T13:50:00.000Z"
+  parameters:
+    - in: path
+      name: id
+      required: true
+      schema:
+        type: string
+      description: Income id
+    - in: query
+      name: fromDate
+      schema:
+        type: string
+        format: date-time
+        example: "2022-10-01T13:50:00.000Z"
+    - in: query
+      name: toDate
+      schema:
+        type: string
+        format: date-time
+        example: "2022-10-31T13:50:00.000Z"
   responses:
     '200':
       description: OK

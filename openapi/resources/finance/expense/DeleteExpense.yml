@@ -4,20 +4,13 @@ delete:
   summary: Изтриване на разход
   description: Изтрива разход
   operationId: DeleteExpense
-  requestBody:
-    content:
-      application/json:
-        schema:
-          type: object
-          required:
-            - userId
-            - id
-          properties:
-            id:
-              type: string
-              description: Expense id
-            userId:
-              type: string
+  parameters:
+    - in: path
+      name: id
+      required: true
+      schema:
+        type: string
+      description: Expense id
   responses:
     '200':
       description: OK

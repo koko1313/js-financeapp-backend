@@ -4,20 +4,19 @@ put:
   summary: Редакторане на приход
   description: Редактира приход
   operationId: UpdateIncome
+  parameters:
+    - in: path
+      name: id
+      required: true
+      schema:
+        type: string
+      description: Income id
   requestBody:
     content:
       application/json:
         schema:
           type: object
-          required:
-            - id
-            - userId
           properties:
-            id:
-              type: string
-              description: Income id
-            userId:
-              type: string
             date:
               type: string
               format: date-time
