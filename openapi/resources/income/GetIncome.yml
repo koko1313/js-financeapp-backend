@@ -5,12 +5,6 @@ get:
   description: Взема приход
   operationId: GetIncome
   parameters:
-    - in: path
-      name: id
-      required: true
-      schema:
-        type: string
-      description: Income id
     - in: query
       name: fromDate
       schema:
@@ -33,14 +27,11 @@ get:
             items:
               type: object
               required:
-                - id
                 - userId
                 - date
                 - amount
                 - comment
               properties:
-                id:
-                  type: string
                 userId:
                   type: string
                 date:

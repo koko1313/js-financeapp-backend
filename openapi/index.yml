@@ -25,7 +25,7 @@ tags:
     description: 'Provides a set of functions to manage the user data and session'
 
 paths:
-  '/income/get/{id}':
+  '/income/get':
     $ref: './resources/income/GetIncome.yml'
   '/income/add':
     $ref: './resources/income/AddIncome.yml'
@@ -34,7 +34,7 @@ paths:
   '/income/delete/{id}':
     $ref: './resources/income/DeleteIncome.yml'
 
-  '/expense/get/{id}':
+  '/expense/get':
     $ref: './resources/expense/GetExpense.yml'
   '/expense/add':
     $ref: './resources/expense/AddExpense.yml'

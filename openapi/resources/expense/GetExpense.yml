@@ -5,12 +5,6 @@ get:
   description: Взема разход
   operationId: GetExpense
   parameters:
-    - in: path
-      name: id
-      required: true
-      schema:
-        type: string
-      description: Expense id
     - in: query
       name: fromDate
       schema:
@@ -33,14 +27,11 @@ get:
             items:
               type: object
               required:
-                - id
                 - userId
                 - date
                 - amount
                 - comment
               properties:
-                id:
-                  type: string
                 userId:
                   type: string
                 date:

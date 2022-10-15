@@ -29,8 +29,7 @@ post:
             required:
               - id
               - email
-              - firstName
-              - lastName
+              - name
               - password
             properties:
               id:
@@ -38,11 +37,8 @@ post:
               email:
                 type: string
                 example: "example@mail.com"
-              firstName:
+              name:
                 type: string
-                example: "Pesho"
-              lastName:
-                type: string
-                example: "Shvepsa"
+                example: "Pesho Shvepsa"
     '500':
       $ref: '../../responses/ErrorResponseBody.yml'
