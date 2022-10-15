@@ -1,5 +1,6 @@
 import express from 'express';
 import dbClient from './database/dbClient.js';
+import { v4 as uuid } from 'uuid';
 import { addExpense, getExpense } from './src/functions/expense.js';
 import { registerUser } from './src/functions/user.js';
 
@@ -25,6 +26,7 @@ app.get('/expense/get', async (req, res) => {
 
 app.post('/expense/add', async (req, res) => {
     const expense = {
+        id: uuid(),
         userId: req.body.userId,
         date: req.body.date,
         amount: req.body.amount,
