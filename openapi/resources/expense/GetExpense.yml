@@ -1,8 +1,8 @@
 get:
   tags:
     - Expense
-  summary: Вземане на разход
-  description: Взема разход
+  summary: Вземане на разходи
+  description: Връща разходите за даден потребител
   operationId: GetExpense
   parameters:
     - in: query

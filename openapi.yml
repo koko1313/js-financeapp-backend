@@ -24,8 +24,8 @@ paths:
     get:
       tags:
         - Income
-      summary: Вземане на приход
-      description: Взема приход
+      summary: Вземане на приходи
+      description: Връща приходите за даден потребител
       operationId: GetIncome
       parameters:
         - in: query
@@ -172,8 +172,8 @@ paths:
     get:
       tags:
         - Expense
-      summary: Вземане на разход
-      description: Взема разход
+      summary: Вземане на разходи
+      description: Връща разходите за даден потребител
       operationId: GetExpense
       parameters:
         - in: query

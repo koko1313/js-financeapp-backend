@@ -1,8 +1,8 @@
 get:
   tags:
     - Income
-  summary: Вземане на приход
-  description: Взема приход
+  summary: Вземане на приходи
+  description: Връща приходите за даден потребител
   operationId: GetIncome
   parameters:
     - in: query
