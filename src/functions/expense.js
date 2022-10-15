@@ -1,19 +1,9 @@
 import { v4 as uuid } from 'uuid';
+import { mapExpenses } from '../utils/mappers.js';
 
 export const getExpense = async (dbClient) => {
     const result = await dbClient.query('SELECT * from expense');
-
-    const expenses = result.rows.map(expense => {
-        return {
-            id: expense.id,
-            userId: expense.user_id,
-            date: expense.date,
-            amount: parseFloat(expense.amount),
-            comment: expense.comment,
-        };
-    });
-
-    return expenses;
+    return mapExpenses(result.rows);
 }
 
 export const addExpense = async (dbClient, expense) => {

@@ -1,7 +1,7 @@
 import express from 'express';
 import dbClient from './database/dbClient.js';
-import { addExpense, getExpense } from './src/expense.js';
-import { registerUser } from './src/user.js';
+import { addExpense, getExpense } from './src/functions/expense.js';
+import { registerUser } from './src/functions/user.js';
 
 const app = express();
 const port = process.env.PORT || 3000;
