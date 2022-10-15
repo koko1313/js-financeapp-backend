@@ -1,6 +1,7 @@
 import express from 'express';
 import dbClient from './database/dbClient.js';
-import { v4 as uuid } from 'uuid';
+import { addExpense, getExpense } from './src/expense.js';
+import { registerUser } from './src/user.js';
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -8,31 +9,35 @@ app.use(express.json());
 await dbClient.connect();
 
 app.get('/', (req, res) => {
-    res.send('Hello World!');
+    res.status(200).send('Hello World!');
 });
 
 app.get('/expense/get', async (req, res) => {
-    const result = await dbClient.query('SELECT * from expense'); 
-    res.send(result.rows);
+    const result = await getExpense(dbClient); 
+    res.status(200).send(result);
 });
 
 app.post('/expense/add', async (req, res) => {
-    const id = uuid();
-    const userId = req.body.userId;
-    const date = req.body.date;
-    const amount = req.body.amount;
-    const comment = req.body.comment;
-    await dbClient.query(`INSERT INTO expense (id, user_id, date, amount, comment) VALUES ('${id}', '${userId}', '${date}', ${amount}, '${comment}')`);
+    const expense = {
+        userId: req.body.userId,
+        date: req.body.date,
+        amount: req.body.amount,
+        comment: req.body.comment,
+    };
+
+    await addExpense(dbClient, expense);
     res.status(200).send();
 });
 
-// register dummy user
 app.post('/user/register', async (req, res) => {
-    const id = 'ca7c5d1a-b06b-419e-bf5c-0981ea53bff4';
-    const email = 'dummy@mail.com';
-    const name = 'Dummy User'
-    const password = '1234';
-    await dbClient.query(`INSERT INTO "user" (id, email, name, password) VALUES ('${id}', '${email}', '${name}', '${password}')`); 
+    // register dummy user
+    const user = {
+        email: 'dummy@mail.com',
+        name: 'Dummy User',
+        password: '1234',
+    };
+
+    await registerUser(dbClient, user);
     res.status(200).send();
 });
 
