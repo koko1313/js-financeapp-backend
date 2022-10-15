@@ -5,7 +5,8 @@ export const getExpense = async (dbClient) => {
 
     const expenses = result.rows.map(expense => {
         return {
-            userId: expense.userId,
+            id: expense.id,
+            userId: expense.user_id,
             date: expense.date,
             amount: parseFloat(expense.amount),
             comment: expense.comment,

@@ -50,11 +50,14 @@ paths:
                 items:
                   type: object
                   required:
+                    - id
                     - userId
                     - date
                     - amount
                     - comment
                   properties:
+                    id:
+                      type: string
                     userId:
                       type: string
                     date:
@@ -198,11 +201,14 @@ paths:
                 items:
                   type: object
                   required:
+                    - id
                     - userId
                     - date
                     - amount
                     - comment
                   properties:
+                    id:
+                      type: string
                     userId:
                       type: string
                     date:

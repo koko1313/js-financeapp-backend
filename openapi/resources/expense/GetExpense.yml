@@ -27,11 +27,14 @@ get:
             items:
               type: object
               required:
+                - id
                 - userId
                 - date
                 - amount
                 - comment
               properties:
+                id:
+                  type: string
                 userId:
                   type: string
                 date:
