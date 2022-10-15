@@ -31,4 +31,4 @@ post:
     '200':
       description: OK
     '500':
-      $ref: '../responses/ErrorResponseBody.yml'
+      $ref: '../../responses/ErrorResponseBody.yml'

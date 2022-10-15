@@ -45,4 +45,4 @@ post:
                 type: string
                 example: "Shvepsa"
     '500':
-      $ref: '../responses/ErrorResponseBody.yml'
+      $ref: '../../responses/ErrorResponseBody.yml'
