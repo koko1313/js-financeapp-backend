@@ -13,7 +13,13 @@ app.get('/', (req, res) => {
 });
 
 app.get('/expense/get', async (req, res) => {
-    const result = await getExpense(dbClient); 
+    const params = {
+        userId: req.body.userId,
+        fromDate: req.query.fromDate,
+        toDate: req.query.toDate,
+    };
+
+    const result = await getExpense(dbClient, params); 
     res.status(200).send(result);
 });
 
