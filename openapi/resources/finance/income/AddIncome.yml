@@ -31,4 +31,4 @@ post:
     '200':
       description: OK
     '500':
-      description: INTERNAL_SERVER_ERROR
+      $ref: '../../responses/ErrorResponseBody.yml'

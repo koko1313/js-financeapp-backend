@@ -45,4 +45,4 @@ post:
                 type: string
                 example: "Shvepsa"
     '500':
-      description: INTERNAL_SERVER_ERROR
+      $ref: '../responses/ErrorResponseBody.yml'

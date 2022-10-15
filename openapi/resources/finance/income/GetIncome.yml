@@ -54,4 +54,4 @@ get:
                   type: string
                   example: "Вечеря"
     '500':
-      description: INTERNAL_SERVER_ERROR
+      $ref: '../../responses/ErrorResponseBody.yml'

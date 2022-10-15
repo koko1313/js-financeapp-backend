@@ -1,0 +1,11 @@
+description: Error response
+content:
+  application/json:
+    schema:
+      type: object
+      required:
+        - message
+      properties:
+        message:
+          type: string
+          description: description of the error

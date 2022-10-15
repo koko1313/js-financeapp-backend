@@ -77,7 +77,7 @@ paths:
                       type: string
                       example: Вечеря
         '500':
-          description: INTERNAL_SERVER_ERROR
+          $ref: '#/paths/~1income~1add/post/responses/500'
   /income/add:
     post:
       tags:
@@ -112,7 +112,17 @@ paths:
         '200':
           description: OK
         '500':
-          description: INTERNAL_SERVER_ERROR
+          description: Error response
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - message
+                properties:
+                  message:
+                    type: string
+                    description: description of the error
   '/income/update/{id}':
     put:
       tags:
@@ -147,7 +157,7 @@ paths:
         '200':
           description: OK
         '500':
-          description: INTERNAL_SERVER_ERROR
+          $ref: '#/paths/~1income~1add/post/responses/500'
   '/income/delete/{id}':
     delete:
       tags:
@@ -166,7 +176,7 @@ paths:
         '200':
           description: OK
         '500':
-          description: INTERNAL_SERVER_ERROR
+          $ref: '#/paths/~1income~1add/post/responses/500'
   '/expense/get/{id}':
     get:
       tags:
@@ -224,7 +234,7 @@ paths:
                       type: string
                       example: Вечеря
         '500':
-          description: INTERNAL_SERVER_ERROR
+          $ref: '#/paths/~1income~1add/post/responses/500'
   /expense/add:
     post:
       tags:
@@ -259,7 +269,7 @@ paths:
         '200':
           description: OK
         '500':
-          description: INTERNAL_SERVER_ERROR
+          $ref: '#/paths/~1income~1add/post/responses/500'
   '/expense/update/{id}':
     put:
       tags:
@@ -294,7 +304,7 @@ paths:
         '200':
           description: OK
         '500':
-          description: INTERNAL_SERVER_ERROR
+          $ref: '#/paths/~1income~1add/post/responses/500'
   '/expense/delete/{id}':
     delete:
       tags:
@@ -313,7 +323,7 @@ paths:
         '200':
           description: OK
         '500':
-          description: INTERNAL_SERVER_ERROR
+          $ref: '#/paths/~1income~1add/post/responses/500'
   /user/register:
     post:
       tags:
@@ -348,7 +358,7 @@ paths:
         '200':
           description: OK
         '500':
-          description: INTERNAL_SERVER_ERROR
+          $ref: '#/paths/~1income~1add/post/responses/500'
   /user/login:
     post:
       tags:
@@ -397,7 +407,7 @@ paths:
                     type: string
                     example: Shvepsa
         '500':
-          description: INTERNAL_SERVER_ERROR
+          $ref: '#/paths/~1income~1add/post/responses/500'
   '/user/update/{id}':
     put:
       tags:
@@ -434,4 +444,4 @@ paths:
         '200':
           description: OK
         '500':
-          description: INTERNAL_SERVER_ERROR
+          $ref: '#/paths/~1income~1add/post/responses/500'
