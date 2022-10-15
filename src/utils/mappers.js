@@ -1,7 +1,7 @@
-export const mapExpenses = (raw) => {
+export const mapExpenses = (dbResponse) => {
     const expenses = [];
 
-    for(const expense of raw) {
+    for(const expense of dbResponse.rows) {
         expenses.push({
             id: expense.id,
             userId: expense.user_id,

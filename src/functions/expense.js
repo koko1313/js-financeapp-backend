@@ -3,7 +3,7 @@ import { mapExpenses } from '../utils/mappers.js';
 
 export const getExpense = async (dbClient) => {
     const result = await dbClient.query('SELECT * from expense');
-    return mapExpenses(result.rows);
+    return mapExpenses(result);
 }
 
 export const addExpense = async (dbClient, expense) => {
