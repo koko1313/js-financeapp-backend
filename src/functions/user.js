@@ -1,4 +1,8 @@
+import { QUERIES } from "../utils/queries.js";
+import { pg as queryBuilder } from 'yesql';
+
 export const registerUser = async (dbClient, user) => {
-    const id = uuid();
-    await dbClient.query(`INSERT INTO "user" (id, email, name, password) VALUES ('${id}', '${user.email}', '${user.name}', '${user.password}')`); 
+    let queryTemplate = QUERIES.registerUser;
+    const query = queryBuilder(queryTemplate)(user);
+    await dbClient.query(query);
 }

@@ -38,8 +38,9 @@ app.post('/expense/add', async (req, res) => {
 });
 
 app.post('/user/register', async (req, res) => {
-    // register dummy user
+    // TODO: currently register dummy user
     const user = {
+        id: uuid(),
         email: 'dummy@mail.com',
         name: 'Dummy User',
         password: '1234',
