@@ -1,18 +1,22 @@
 import { mapExpenses } from '../utils/mappers.js';
 import { QUERIES } from '../utils/queries.js';
-import { pg as sql } from 'yesql';
+import { pg as queryBuilder } from 'yesql';
 
 export const getExpense = async (dbClient, params) => {
-    let query = QUERIES.getExpenses;
+    let queryTemplate = QUERIES.getExpenses;
 
     // append parameters
-    query += params.fromDate ? " AND date > :fromDate" : "";
-    query += params.toDate ? " AND date < :toDate" : "";
+    queryTemplate += params.fromDate ? " AND date > :fromDate" : "";
+    queryTemplate += params.toDate ? " AND date < :toDate" : "";
+    queryTemplate += " ORDER BY date DESC"; // TODO: find a more fancy solution
 
-    const result = await dbClient.query(sql(query)(params));
+    const query = queryBuilder(queryTemplate)(params);
+
+    const result = await dbClient.query(query);
     return mapExpenses(result);
 }
 
 export const addExpense = async (dbClient, expense) => {
-    await dbClient.query(sql(QUERIES.addExpense)(expense));
+    const query = queryBuilder(QUERIES.addExpense)(expense);
+    await dbClient.query(query);
 }
