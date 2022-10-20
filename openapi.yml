@@ -11,7 +11,7 @@ info:
     url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
   version: 1.0.3
 servers:
-  - url: 'https://financeapp-be.herokuapp.com/'
+  - url: 'https://financeapp-be.vercel.app/'
 tags:
   - name: Income
     description: Provides a set of functions to interact with the income data
