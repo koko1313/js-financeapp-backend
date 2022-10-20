@@ -3,7 +3,7 @@ import { QUERIES } from '../utils/queries.js';
 import { pg as queryBuilder } from 'yesql';
 
 export const getExpense = async (dbClient, params) => {
-    let queryTemplate = QUERIES.getExpenses;
+    let queryTemplate = QUERIES.getExpensesByUserId;
 
     // append parameters
     queryTemplate += params.fromDate ? " AND date > :fromDate" : "";
@@ -19,4 +19,21 @@ export const getExpense = async (dbClient, params) => {
 export const addExpense = async (dbClient, expense) => {
     const query = queryBuilder(QUERIES.addExpense)(expense);
     await dbClient.query(query);
+}
+
+export const updateExpense = async (dbClient, id, updatedExpense) => {
+    const getQuery = queryBuilder(QUERIES.getExpenseById)({ id: id });
+    const result = await dbClient.query(getQuery);
+    const expense = result.rows[0];
+
+    if (!expense) {
+        return `Expense with id ${id} was not found`;
+    }
+    
+    for(const key of Object.keys(updatedExpense)) {
+        expense[key] = updatedExpense[key];
+    }
+
+    const updateQuery = queryBuilder(QUERIES.updateExpenseById)(expense);
+    await dbClient.query(updateQuery);
 }

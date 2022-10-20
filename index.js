@@ -1,7 +1,7 @@
 import express from 'express';
 import dbClient from './database/dbClient.js';
 import { v4 as uuid } from 'uuid';
-import { addExpense, getExpense } from './src/functions/expense.js';
+import { addExpense, getExpense, updateExpense } from './src/functions/expense.js';
 import { registerUser } from './src/functions/user.js';
 
 const app = express();
@@ -35,6 +35,34 @@ app.post('/expense/add', async (req, res) => {
 
     await addExpense(dbClient, expense);
     res.status(200).send();
+});
+
+app.put('/expense/update/:id', async (req, res) => {
+    const updatedExpense = {};
+
+    if (req.body.date) {
+        updatedExpense.date = req.body.date;
+    }
+
+    if (req.body.amount) {
+        updatedExpense.amount = req.body.amount;
+    }
+
+    if (req.body.comment) {
+        updatedExpense.comment = req.body.comment;
+    }
+
+    try {
+        const message = await updateExpense(dbClient, req.params.id, updatedExpense);
+        
+        if (message) {
+            res.status(404).send({ message: message })
+        } else {
+            res.status(200).send();
+        }
+    } catch (ex) {
+        res.status(500).send({ message: "Something went wrong" });
+    }
 });
 
 app.post('/user/register', async (req, res) => {
