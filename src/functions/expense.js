@@ -37,3 +37,8 @@ export const updateExpense = async (dbClient, id, updatedExpense) => {
     const updateQuery = queryBuilder(QUERIES.updateExpenseById)(expense);
     await dbClient.query(updateQuery);
 }
+
+export const deleteExpense = async (dbClient, id) => {
+    const query = queryBuilder(QUERIES.deleteExpenseById)({ id: id });
+    await dbClient.query(query);
+}
