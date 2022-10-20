@@ -1,16 +1,16 @@
 put:
   tags:
-    - Expense
-  summary: Редакторане на разход
-  description: Редактира разход
-  operationId: UpdateExpense
+    - Income
+  summary: Редакторане на приход
+  description: Редактира приход
+  operationId: UpdateIncome
   parameters:
     - in: path
       name: id
       required: true
       schema:
         type: string
-      description: Expense id
+      description: Income id
   requestBody:
     content:
       application/json:
@@ -23,12 +23,12 @@ put:
               example: "2022-10-09T13:50:00.000Z"
             amount:
               type: number
-              example: 150.80
+              example: 600.80
             comment:
               type: string
-              example: "Гориво"
+              example: "Продадох си телефона"
   responses:
     '200':
       description: OK
     '500':
-      description: INTERNAL_SERVER_ERROR
+      $ref: '../../responses/ErrorResponseBody.yml'

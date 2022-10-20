@@ -7,7 +7,7 @@ CREATE TABLE "user" (
 
 CREATE TABLE "income" (
     "id" uuid NOT NULL PRIMARY KEY,
-    "dateTime" text,
+    "date" text,
     "amount" numeric,
     "comment" text,
     "user_id" uuid,
@@ -18,7 +18,7 @@ CREATE TABLE "income" (
 
 CREATE TABLE "expense" (
     "id" uuid NOT NULL PRIMARY KEY,
-    "dateTime" text,
+    "date" text,
     "amount" numeric,
     "comment" text,
     "user_id" uuid,

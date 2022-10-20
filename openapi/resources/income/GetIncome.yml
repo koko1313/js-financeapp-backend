@@ -1,16 +1,10 @@
 get:
   tags:
     - Income
-  summary: Вземане на приход
-  description: Взема приход
+  summary: Вземане на приходи
+  description: Връща приходите за даден потребител
   operationId: GetIncome
   parameters:
-    - in: path
-      name: id
-      required: true
-      schema:
-        type: string
-      description: Income id
     - in: query
       name: fromDate
       schema:
@@ -54,4 +48,4 @@ get:
                   type: string
                   example: "Вечеря"
     '500':
-      description: INTERNAL_SERVER_ERROR
+      $ref: '../../responses/ErrorResponseBody.yml'

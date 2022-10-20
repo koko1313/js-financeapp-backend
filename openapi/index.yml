@@ -25,23 +25,23 @@ tags:
     description: 'Provides a set of functions to manage the user data and session'
 
 paths:
-  '/income/get/{id}':
-    $ref: './resources/finance/income/GetIncome.yml'
+  '/income/get':
+    $ref: './resources/income/GetIncome.yml'
   '/income/add':
-    $ref: './resources/finance/income/AddIncome.yml'
+    $ref: './resources/income/AddIncome.yml'
   '/income/update/{id}':
-    $ref: './resources/finance/income/UpdateIncome.yml'
+    $ref: './resources/income/UpdateIncome.yml'
   '/income/delete/{id}':
-    $ref: './resources/finance/income/DeleteIncome.yml'
+    $ref: './resources/income/DeleteIncome.yml'
 
-  '/expense/get/{id}':
-    $ref: './resources/finance/expense/GetExpense.yml'
+  '/expense/get':
+    $ref: './resources/expense/GetExpense.yml'
   '/expense/add':
-    $ref: './resources/finance/expense/AddExpense.yml'
+    $ref: './resources/expense/AddExpense.yml'
   '/expense/update/{id}':
-    $ref: './resources/finance/expense/UpdateExpense.yml'
+    $ref: './resources/expense/UpdateExpense.yml'
   '/expense/delete/{id}':
-    $ref: './resources/finance/expense/DeleteExpense.yml'
+    $ref: './resources/expense/DeleteExpense.yml'
 
   '/user/register':
     $ref: './resources/user/RegisterUser.yml'

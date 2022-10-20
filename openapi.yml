@@ -20,20 +20,14 @@ tags:
   - name: User
     description: Provides a set of functions to manage the user data and session
 paths:
-  '/income/get/{id}':
+  /income/get:
     get:
       tags:
         - Income
-      summary: Вземане на приход
-      description: Взема приход
+      summary: Вземане на приходи
+      description: Връща приходите за даден потребител
       operationId: GetIncome
       parameters:
-        - in: path
-          name: id
-          required: true
-          schema:
-            type: string
-          description: Income id
         - in: query
           name: fromDate
           schema:
@@ -77,7 +71,17 @@ paths:
                       type: string
                       example: Вечеря
         '500':
-          description: INTERNAL_SERVER_ERROR
+          description: Error response
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - message
+                properties:
+                  message:
+                    type: string
+                    description: description of the error
   /income/add:
     post:
       tags:
@@ -112,7 +116,7 @@ paths:
         '200':
           description: OK
         '500':
-          description: INTERNAL_SERVER_ERROR
+          $ref: '#/paths/~1income~1get/get/responses/500'
   '/income/update/{id}':
     put:
       tags:
@@ -147,7 +151,7 @@ paths:
         '200':
           description: OK
         '500':
-          description: INTERNAL_SERVER_ERROR
+          $ref: '#/paths/~1income~1get/get/responses/500'
   '/income/delete/{id}':
     delete:
       tags:
@@ -166,21 +170,15 @@ paths:
         '200':
           description: OK
         '500':
-          description: INTERNAL_SERVER_ERROR
-  '/expense/get/{id}':
+          $ref: '#/paths/~1income~1get/get/responses/500'
+  /expense/get:
     get:
       tags:
         - Expense
-      summary: Вземане на разход
-      description: Взема разход
+      summary: Вземане на разходи
+      description: Връща разходите за даден потребител
       operationId: GetExpense
       parameters:
-        - in: path
-          name: id
-          required: true
-          schema:
-            type: string
-          description: Expense id
         - in: query
           name: fromDate
           schema:
@@ -224,7 +222,7 @@ paths:
                       type: string
                       example: Вечеря
         '500':
-          description: INTERNAL_SERVER_ERROR
+          $ref: '#/paths/~1income~1get/get/responses/500'
   /expense/add:
     post:
       tags:
@@ -259,7 +257,7 @@ paths:
         '200':
           description: OK
         '500':
-          description: INTERNAL_SERVER_ERROR
+          $ref: '#/paths/~1income~1get/get/responses/500'
   '/expense/update/{id}':
     put:
       tags:
@@ -294,7 +292,7 @@ paths:
         '200':
           description: OK
         '500':
-          description: INTERNAL_SERVER_ERROR
+          $ref: '#/paths/~1income~1get/get/responses/500'
   '/expense/delete/{id}':
     delete:
       tags:
@@ -313,7 +311,7 @@ paths:
         '200':
           description: OK
         '500':
-          description: INTERNAL_SERVER_ERROR
+          $ref: '#/paths/~1income~1get/get/responses/500'
   /user/register:
     post:
       tags:
@@ -328,19 +326,15 @@ paths:
               type: object
               required:
                 - email
-                - firstName
-                - lastName
+                - name
                 - password
               properties:
                 email:
                   type: string
                   example: example@mail.com
-                firstName:
+                name:
                   type: string
-                  example: Pesho
-                lastName:
-                  type: string
-                  example: Shvepsa
+                  example: Pesho Shvepsa
                 password:
                   type: string
                   example: my_password_123
@@ -348,7 +342,7 @@ paths:
         '200':
           description: OK
         '500':
-          description: INTERNAL_SERVER_ERROR
+          $ref: '#/paths/~1income~1get/get/responses/500'
   /user/login:
     post:
       tags:
@@ -381,8 +375,7 @@ paths:
                 required:
                   - id
                   - email
-                  - firstName
-                  - lastName
+                  - name
                   - password
                 properties:
                   id:
@@ -390,14 +383,11 @@ paths:
                   email:
                     type: string
                     example: example@mail.com
-                  firstName:
+                  name:
                     type: string
-                    example: Pesho
-                  lastName:
-                    type: string
-                    example: Shvepsa
+                    example: Pesho Shvepsa
         '500':
-          description: INTERNAL_SERVER_ERROR
+          $ref: '#/paths/~1income~1get/get/responses/500'
   '/user/update/{id}':
     put:
       tags:
@@ -421,12 +411,9 @@ paths:
                 email:
                   type: string
                   example: example@mail.com
-                firstName:
+                name:
                   type: string
-                  example: Pesho
-                lastName:
-                  type: string
-                  example: Shvepsa
+                  example: Pesho Shvepsa
                 password:
                   type: string
                   example: my_password_123
@@ -434,4 +421,4 @@ paths:
         '200':
           description: OK
         '500':
-          description: INTERNAL_SERVER_ERROR
+          $ref: '#/paths/~1income~1get/get/responses/500'

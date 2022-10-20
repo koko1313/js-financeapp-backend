@@ -1,6 +1,8 @@
 import express from 'express';
 import dbClient from './database/dbClient.js';
 import { v4 as uuid } from 'uuid';
+import { addExpense, getExpense } from './src/functions/expense.js';
+import { registerUser } from './src/functions/user.js';
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -8,18 +10,43 @@ app.use(express.json());
 await dbClient.connect();
 
 app.get('/', (req, res) => {
-    res.send('Hello World!');
+    res.status(200).send('Hello World!');
 });
 
-app.get('/getEntries', async (req, res) => {
-    const result = await dbClient.query('SELECT * from test_table'); 
-    res.send(result.rows);
+app.get('/expense/get', async (req, res) => {
+    const params = {
+        userId: req.body.userId,
+        fromDate: req.query.fromDate,
+        toDate: req.query.toDate,
+    };
+
+    const result = await getExpense(dbClient, params); 
+    res.status(200).send(result);
 });
 
-app.post('/insertEntry', async (req, res) => {
-    const id = uuid();
-    const name = req.body.name;
-    await dbClient.query(`INSERT INTO test_table (id, name) VALUES ('${id}', '${name}')`); 
+app.post('/expense/add', async (req, res) => {
+    const expense = {
+        id: uuid(),
+        userId: req.body.userId,
+        date: req.body.date,
+        amount: req.body.amount,
+        comment: req.body.comment,
+    };
+
+    await addExpense(dbClient, expense);
+    res.status(200).send();
+});
+
+app.post('/user/register', async (req, res) => {
+    // TODO: currently register dummy user
+    const user = {
+        id: uuid(),
+        email: 'dummy@mail.com',
+        name: 'Dummy User',
+        password: '1234',
+    };
+
+    await registerUser(dbClient, user);
     res.status(200).send();
 });
 

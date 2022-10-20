@@ -11,19 +11,15 @@ post:
           type: object
           required:
             - email
-            - firstName
-            - lastName
+            - name
             - password
           properties:
             email:
               type: string
               example: "example@mail.com"
-            firstName:
+            name:
               type: string
-              example: "Pesho"
-            lastName:
-              type: string
-              example: "Shvepsa"
+              example: "Pesho Shvepsa"
             password:
               type: string
               example: "my_password_123"
@@ -31,4 +27,4 @@ post:
     '200':
       description: OK
     '500':
-      description: INTERNAL_SERVER_ERROR
+      $ref: '../../responses/ErrorResponseBody.yml'
