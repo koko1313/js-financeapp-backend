@@ -15,7 +15,7 @@ app.get('/', (req, res) => {
 
 app.get('/expense/get', async (req, res) => {
     const params = {
-        userId: req.body.userId,
+        userId: req.query.userId,
         fromDate: req.query.fromDate,
         toDate: req.query.toDate,
     };

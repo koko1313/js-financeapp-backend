@@ -6,6 +6,11 @@ get:
   operationId: GetExpense
   parameters:
     - in: query
+      name: userId
+      schema:
+        type: string
+        format: uuid
+    - in: query
       name: fromDate
       schema:
         type: string
