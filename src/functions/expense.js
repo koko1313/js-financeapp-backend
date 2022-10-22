@@ -30,7 +30,7 @@ export const updateExpense = async (id, updatedExpense) => {
     const expense = result.rows[0];
 
     if (!expense) {
-        return `Expense with id ${id} was not found`;
+        throw new Error(`Expense with id ${id} was not found`);
     }
     
     for(const key of Object.keys(updatedExpense)) {

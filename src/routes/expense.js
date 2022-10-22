@@ -11,8 +11,12 @@ router.get('/expense/get', async (req, res) => {
         toDate: req.query.toDate,
     };
 
-    const result = await getExpense(params); 
-    res.status(200).send(result);
+    try {
+        const result = await getExpense(params); 
+        res.status(200).send(result);
+    } catch (ex) {
+        res.status(500).send({ message: "Something went wrong" });
+    }
 });
 
 router.post('/expense/add', async (req, res) => {
@@ -24,8 +28,12 @@ router.post('/expense/add', async (req, res) => {
         comment: req.body.comment,
     };
 
-    await addExpense(expense);
-    res.status(200).send();
+    try {
+        await addExpense(expense);
+        res.status(200).send();
+    } catch (ex) {
+        res.status(500).send({ message: "Something went wrong" });
+    }
 });
 
 router.put('/expense/update/:id', async (req, res) => {
@@ -44,16 +52,10 @@ router.put('/expense/update/:id', async (req, res) => {
     }
 
     try {
-        const message = await updateExpense(req.params.id, updatedExpense);
-
-        if (message) {
-            res.status(404).send({ message: message })
-        } else {
-            res.status(200).send();
-        }
+        await updateExpense(req.params.id, updatedExpense);
+        res.status(200).send();
     } catch (ex) {
-        console.log(ex);
-        res.status(500).send({ message: "Something went wrong" });
+        res.status(500).send({ message: ex.message });
     }
 });
 
@@ -64,7 +66,6 @@ router.delete('/expense/delete/:id', async (req, res) => {
         await deleteExpense(id); 
         res.status(200).send();
     } catch (ex) {
-        console.log(ex);
         res.status(500).send({ message: "Something went wrong" });
     }
 });
