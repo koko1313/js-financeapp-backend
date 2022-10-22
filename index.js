@@ -1,5 +1,6 @@
 import express from 'express';
 import dbClient from './database/dbClient.js';
+import cors from 'cors';
 import { v4 as uuid } from 'uuid';
 import { addExpense, deleteExpense, getExpense, updateExpense } from './src/functions/expense.js';
 import { registerUser } from './src/functions/user.js';
@@ -7,6 +8,7 @@ import { registerUser } from './src/functions/user.js';
 const app = express();
 const port = process.env.PORT || 3000;
 app.use(express.json());
+app.use(cors()); // enable cors
 await dbClient.connect();
 
 app.get('/', (req, res) => {
