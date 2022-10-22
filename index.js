@@ -18,5 +18,5 @@ app.use(incomeRoutes);
 app.use(userRoutes);
 
 app.listen(port, () => {
-    console.log(`Example app listening on port ${port}`);
+    console.log(`Finance app backend listening on port ${port}`);
 });
