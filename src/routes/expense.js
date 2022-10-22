@@ -1,11 +1,8 @@
 import express from 'express';
 import { v4 as uuid } from 'uuid';
-import { initDbClient } from '../../database/dbClient.js';
 import { addExpense, deleteExpense, getExpense, updateExpense } from '../functions/expense.js';
 
 const router = express.Router();
-
-const dbClient = initDbClient();
 
 router.get('/expense/get', async (req, res) => {
     const params = {
@@ -14,7 +11,7 @@ router.get('/expense/get', async (req, res) => {
         toDate: req.query.toDate,
     };
 
-    const result = await getExpense(dbClient, params); 
+    const result = await getExpense(params); 
     res.status(200).send(result);
 });
 
@@ -27,7 +24,7 @@ router.post('/expense/add', async (req, res) => {
         comment: req.body.comment,
     };
 
-    await addExpense(dbClient, expense);
+    await addExpense(expense);
     res.status(200).send();
 });
 
@@ -47,7 +44,7 @@ router.put('/expense/update/:id', async (req, res) => {
     }
 
     try {
-        const message = await updateExpense(dbClient, req.params.id, updatedExpense);
+        const message = await updateExpense(req.params.id, updatedExpense);
 
         if (message) {
             res.status(404).send({ message: message })
@@ -64,7 +61,7 @@ router.delete('/expense/delete/:id', async (req, res) => {
     const id = req.params.id;
 
     try {
-        await deleteExpense(dbClient, id); 
+        await deleteExpense(id); 
         res.status(200).send();
     } catch (ex) {
         console.log(ex);

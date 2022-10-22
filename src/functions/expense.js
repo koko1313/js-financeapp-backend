@@ -1,8 +1,11 @@
 import { mapExpenses } from '../utils/mappers.js';
 import { QUERIES } from '../utils/queries.js';
 import { pg as queryBuilder } from 'yesql';
+import { initDbClient } from '../../database/dbClient.js';
 
-export const getExpense = async (dbClient, params) => {
+const dbClient = initDbClient();
+
+export const getExpense = async (params) => {
     let queryTemplate = QUERIES.getExpensesByUserId;
 
     // append parameters
@@ -16,12 +19,12 @@ export const getExpense = async (dbClient, params) => {
     return mapExpenses(result);
 }
 
-export const addExpense = async (dbClient, expense) => {
+export const addExpense = async (expense) => {
     const query = queryBuilder(QUERIES.addExpense)(expense);
     await dbClient.query(query);
 }
 
-export const updateExpense = async (dbClient, id, updatedExpense) => {
+export const updateExpense = async (id, updatedExpense) => {
     const getQuery = queryBuilder(QUERIES.getExpenseById)({ id: id });
     const result = await dbClient.query(getQuery);
     const expense = result.rows[0];
@@ -38,7 +41,7 @@ export const updateExpense = async (dbClient, id, updatedExpense) => {
     await dbClient.query(updateQuery);
 }
 
-export const deleteExpense = async (dbClient, id) => {
+export const deleteExpense = async (id) => {
     const query = queryBuilder(QUERIES.deleteExpenseById)({ id: id });
     await dbClient.query(query);
 }
