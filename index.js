@@ -1,6 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import expenseRoutes from './src/routes/expense.js';
+import incomeRoutes from './src/routes/income.js';
 import userRoutes from './src/routes/user.js';
 
 const app = express();
@@ -13,6 +14,7 @@ app.get('/', (req, res) => {
 });
 
 app.use(expenseRoutes);
+app.use(incomeRoutes);
 app.use(userRoutes);
 
 app.listen(port, () => {
