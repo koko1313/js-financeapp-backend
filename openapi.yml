@@ -29,6 +29,11 @@ paths:
       operationId: GetIncome
       parameters:
         - in: query
+          name: userId
+          schema:
+            type: string
+            format: uuid
+        - in: query
           name: fromDate
           schema:
             type: string
@@ -179,6 +184,11 @@ paths:
       description: Връща разходите за даден потребител
       operationId: GetExpense
       parameters:
+        - in: query
+          name: userId
+          schema:
+            type: string
+            format: uuid
         - in: query
           name: fromDate
           schema:
