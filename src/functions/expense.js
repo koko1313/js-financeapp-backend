@@ -24,13 +24,11 @@ export const addExpense = async (expense) => {
     await dbClient.query(query);
 }
 
-export const updateExpense = async (id, updatedExpense) => {
-    const getQuery = queryBuilder(QUERIES.getExpenseById)({ id: id });
-    const result = await dbClient.query(getQuery);
-    const expense = result.rows[0];
+export const updateExpense = async (id, userId, updatedExpense) => {
+    const expense = await getExpenseByIdAndUserId(id, userId);
 
     if (!expense) {
-        throw new Error(`Expense with id ${id} was not found`);
+        throw new Error(`Expense with id ${id} was not found for user ${userId}`);
     }
     
     for(const key of Object.keys(updatedExpense)) {
@@ -41,7 +39,21 @@ export const updateExpense = async (id, updatedExpense) => {
     await dbClient.query(updateQuery);
 }
 
-export const deleteExpense = async (id) => {
+export const deleteExpense = async (id, userId) => {
+    const expense = await getExpenseByIdAndUserId(id, userId);
+
+    if (!expense) {
+        throw new Error(`Expense with id ${id} was not found for user ${userId}`);
+    }
+
     const query = queryBuilder(QUERIES.deleteExpenseById)({ id: id });
     await dbClient.query(query);
+}
+
+const getExpenseByIdAndUserId = async (id, userId) => {
+    const getQuery = queryBuilder(QUERIES.getExpenseByIdAndUserId)({ id: id, userId: userId });
+    const result = await dbClient.query(getQuery);
+    const expense = result.rows[0];
+
+    return expense;
 }

@@ -16,14 +16,14 @@ router.get('/expense/get', decodeJWTToken, async (req, res) => {
         const result = await getExpense(params); 
         res.status(200).send(result);
     } catch (ex) {
-        res.status(500).send({ message: "Something went wrong" });
+        res.status(500).send({ message: ex.message });
     }
 });
 
-router.post('/expense/add', async (req, res) => {
+router.post('/expense/add', decodeJWTToken, async (req, res) => {
     const expense = {
         id: uuid(),
-        userId: req.body.userId,
+        userId: req.user.id,
         date: req.body.date,
         amount: req.body.amount,
         comment: req.body.comment,
@@ -33,12 +33,13 @@ router.post('/expense/add', async (req, res) => {
         await addExpense(expense);
         res.status(200).send();
     } catch (ex) {
-        res.status(500).send({ message: "Something went wrong" });
+        res.status(500).send({ message: ex.message });
     }
 });
 
-router.put('/expense/update/:id', async (req, res) => {
+router.put('/expense/update/:id', decodeJWTToken, async (req, res) => {
     const updatedExpense = {};
+    const userId = req.user.id;
 
     if (req.body.date) {
         updatedExpense.date = req.body.date;
@@ -53,21 +54,22 @@ router.put('/expense/update/:id', async (req, res) => {
     }
 
     try {
-        await updateExpense(req.params.id, updatedExpense);
+        await updateExpense(req.params.id, userId, updatedExpense);
         res.status(200).send();
     } catch (ex) {
         res.status(500).send({ message: ex.message });
     }
 });
 
-router.delete('/expense/delete/:id', async (req, res) => {
+router.delete('/expense/delete/:id', decodeJWTToken, async (req, res) => {
     const id = req.params.id;
+    const userId = req.user.id;
 
     try {
-        await deleteExpense(id); 
+        await deleteExpense(id, userId); 
         res.status(200).send();
     } catch (ex) {
-        res.status(500).send({ message: "Something went wrong" });
+        res.status(500).send({ message: ex.message });
     }
 });
 

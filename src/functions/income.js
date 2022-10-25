@@ -24,13 +24,11 @@ export const addIncome = async (income) => {
     await dbClient.query(query);
 }
 
-export const updateIncome = async (id, updatedIncome) => {
-    const getQuery = queryBuilder(QUERIES.getIncomeById)({ id: id });
-    const result = await dbClient.query(getQuery);
-    const income = result.rows[0];
+export const updateIncome = async (id, userId, updatedIncome) => {
+    const income = await getIncomeByIdAndUserId(id, userId);
 
     if (!income) {
-        throw new Error(`Income with id ${id} was not found`);
+        throw new Error(`Income with id ${id} was not found for user ${userId}`);
     }
     
     for(const key of Object.keys(updatedIncome)) {
@@ -41,7 +39,21 @@ export const updateIncome = async (id, updatedIncome) => {
     await dbClient.query(updateQuery);
 }
 
-export const deleteIncome = async (id) => {
+export const deleteIncome = async (id, userId) => {
+    const income = await getIncomeByIdAndUserId(id, userId);
+
+    if (!income) {
+        throw new Error(`Income with id ${id} was not found for user ${userId}`);
+    }
+
     const query = queryBuilder(QUERIES.deleteIncomeById)({ id: id });
     await dbClient.query(query);
+}
+
+const getIncomeByIdAndUserId = async (id, userId) => {
+    const getQuery = queryBuilder(QUERIES.getIncomeByIdAndUserId)({ id: id, userId: userId });
+    const result = await dbClient.query(getQuery);
+    const income = result.rows[0];
+
+    return income;
 }

@@ -1,17 +1,18 @@
 import express from 'express';
 import { v4 as uuid } from 'uuid';
 import { addIncome, deleteIncome, getIncome, updateIncome } from '../functions/income.js';
+import { decodeJWTToken } from '../utils/jwtToken.js';
 
 const router = express.Router();
 
-router.get('/income/get', async (req, res) => {
-    const params = {
-        userId: req.query.userId,
-        fromDate: req.query.fromDate,
-        toDate: req.query.toDate,
-    };
-
+router.get('/income/get', decodeJWTToken, async (req, res) => {
     try {
+        const params = {
+            userId: req.user.id,
+            fromDate: req.query.fromDate,
+            toDate: req.query.toDate,
+        };
+
         const result = await getIncome(params); 
         res.status(200).send(result);
     } catch (ex) {
@@ -19,10 +20,10 @@ router.get('/income/get', async (req, res) => {
     }
 });
 
-router.post('/income/add', async (req, res) => {
+router.post('/income/add', decodeJWTToken, async (req, res) => {
     const income = {
         id: uuid(),
-        userId: req.body.userId,
+        userId: req.user.id,
         date: req.body.date,
         amount: req.body.amount,
         comment: req.body.comment,
@@ -36,8 +37,9 @@ router.post('/income/add', async (req, res) => {
     }
 });
 
-router.put('/income/update/:id', async (req, res) => {
+router.put('/income/update/:id', decodeJWTToken, async (req, res) => {
     const updatedIncome = {};
+    const userId = req.user.id;
 
     if (req.body.date) {
         updatedIncome.date = req.body.date;
@@ -52,18 +54,19 @@ router.put('/income/update/:id', async (req, res) => {
     }
 
     try {
-        await updateIncome(req.params.id, updatedIncome);
+        await updateIncome(req.params.id, userId, updatedIncome);
         res.status(200).send();
     } catch (ex) {
         res.status(500).send({ message: ex.message });
     }
 });
 
-router.delete('/income/delete/:id', async (req, res) => {
+router.delete('/income/delete/:id', decodeJWTToken, async (req, res) => {
     const id = req.params.id;
+    const userId = req.user.id;
 
     try {
-        await deleteIncome(id); 
+        await deleteIncome(id, userId); 
         res.status(200).send();
     } catch (ex) {
         res.status(500).send({ message: ex.message });
