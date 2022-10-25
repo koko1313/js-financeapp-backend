@@ -1,17 +1,18 @@
 import express from 'express';
 import { v4 as uuid } from 'uuid';
 import { addExpense, deleteExpense, getExpense, updateExpense } from '../functions/expense.js';
+import { decodeJWTToken } from '../utils/jwtToken.js';
 
 const router = express.Router();
 
-router.get('/expense/get', async (req, res) => {
-    const params = {
-        userId: req.query.userId,
-        fromDate: req.query.fromDate,
-        toDate: req.query.toDate,
-    };
-
+router.get('/expense/get', decodeJWTToken, async (req, res) => {
     try {
+        const params = {
+            userId: req.user.id, // get the user from req - middleware function (decodeJWTToken) attaches the user to the req
+            fromDate: req.query.fromDate,
+            toDate: req.query.toDate,
+        };
+
         const result = await getExpense(params); 
         res.status(200).send(result);
     } catch (ex) {

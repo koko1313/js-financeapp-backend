@@ -29,3 +29,19 @@ export const mapIncome = (dbResponse) => {
 
     return incomes;
 }
+
+export const mapUser = (dbResponse) => {
+    const dbUser = dbResponse.rows[0];
+    
+    let user = undefined;
+
+    if (dbUser) {
+        user = {
+            id: dbUser?.id,
+            email: dbUser?.email,
+            name: dbUser?.name,
+        };
+    }
+
+    return user;
+}
