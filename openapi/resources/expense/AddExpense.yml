@@ -10,13 +10,10 @@ post:
         schema:
           type: object
           required:
-            - userId
             - date
             - amount
             - comment
           properties:
-            userId:
-              type: string
             date:
               type: string
               format: date-time

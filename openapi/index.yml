@@ -24,6 +24,13 @@ tags:
   - name: User
     description: 'Provides a set of functions to manage the user data and session'
 
+components:
+  securitySchemes:
+    OIDC:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
 paths:
   '/income/get':
     $ref: './resources/income/GetIncome.yml'

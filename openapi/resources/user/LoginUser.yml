@@ -30,7 +30,7 @@ post:
               - id
               - email
               - name
-              - password
+              - jwtToken
             properties:
               id:
                 type: string
@@ -40,5 +40,7 @@ post:
               name:
                 type: string
                 example: "Pesho Shvepsa"
+              jwtToken:
+                type: string
     '500':
       $ref: '../../responses/ErrorResponseBody.yml'

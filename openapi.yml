@@ -19,6 +19,12 @@ tags:
     description: Provides a set of functions to interact with the expense data
   - name: User
     description: Provides a set of functions to manage the user data and session
+components:
+  securitySchemes:
+    OIDC:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
 paths:
   /income/get:
     get:
@@ -28,11 +34,6 @@ paths:
       description: Връща приходите за даден потребител
       operationId: GetIncome
       parameters:
-        - in: query
-          name: userId
-          schema:
-            type: string
-            format: uuid
         - in: query
           name: fromDate
           schema:
@@ -100,13 +101,10 @@ paths:
             schema:
               type: object
               required:
-                - userId
                 - date
                 - amount
                 - comment
               properties:
-                userId:
-                  type: string
                 date:
                   type: string
                   format: date-time
@@ -185,11 +183,6 @@ paths:
       operationId: GetExpense
       parameters:
         - in: query
-          name: userId
-          schema:
-            type: string
-            format: uuid
-        - in: query
           name: fromDate
           schema:
             type: string
@@ -246,13 +239,10 @@ paths:
             schema:
               type: object
               required:
-                - userId
                 - date
                 - amount
                 - comment
               properties:
-                userId:
-                  type: string
                 date:
                   type: string
                   format: date-time
@@ -386,7 +376,7 @@ paths:
                   - id
                   - email
                   - name
-                  - password
+                  - jwtToken
                 properties:
                   id:
                     type: string
@@ -396,6 +386,8 @@ paths:
                   name:
                     type: string
                     example: Pesho Shvepsa
+                  jwtToken:
+                    type: string
         '500':
           $ref: '#/paths/~1income~1get/get/responses/500'
   '/user/update/{id}':
