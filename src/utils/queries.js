@@ -13,5 +13,5 @@ export const QUERIES = {
     
     getUserByEmail: 'SELECT id, email, name FROM "user" WHERE email = :email',
     getUserByEmailAndPassword: 'SELECT id, email, name FROM "user" WHERE email = :email AND password = :password',
-    registerUser: 'INSERT INTO "user" (id, email, name, password) VALUES (:id, :email, :name, :password)',
+    addUser: 'INSERT INTO "user" (id, email, name, password) VALUES (:id, :email, :name, :password)',
 };
