@@ -3,8 +3,11 @@ import { QUERIES } from "../utils/queries.js";
 import { pg as queryBuilder } from 'yesql';
 
 export default class IncomeDAO {
-    static getIncomeByParams = async (params) => {
-        const dbClient = initDbClient();
+    constructor () {
+        this.dbClient = initDbClient();
+    }
+
+    getIncomeByParams = async (params) => {
         let queryTemplate = QUERIES.getIncomesByUserId;
     
         // append parameters
@@ -14,32 +17,28 @@ export default class IncomeDAO {
     
         const query = queryBuilder(queryTemplate)(params);
     
-        const result = await dbClient.query(query);
+        const result = await this.dbClient.query(query);
         return result;
     }
 
-    static addIncome = async (income) => {
-        const dbClient = initDbClient();
+    addIncome = async (income) => {
         const query = queryBuilder(QUERIES.addIncome)(income);
-        await dbClient.query(query);
+        await this.dbClient.query(query);
     }
 
-    static updateIncome = async (income) => {
-        const dbClient = initDbClient();
+    updateIncome = async (income) => {
         const query = queryBuilder(QUERIES.updateIncomeById)(income);
-        await dbClient.query(query);
+        await this.dbClient.query(query);
     }
 
-    static deleteIncome = async (id) => {
-        const dbClient = initDbClient();
+    deleteIncome = async (id) => {
         const query = queryBuilder(QUERIES.deleteIncomeById)({ id: id });
-        await dbClient.query(query);
+        await this.dbClient.query(query);
     }
 
-    static getIncomeByIdAndUserId = async (id, userId) => {
-        const dbClient = initDbClient();
+    getIncomeByIdAndUserId = async (id, userId) => {
         const getQuery = queryBuilder(QUERIES.getIncomeByIdAndUserId)({ id: id, userId: userId });
-        const result = await dbClient.query(getQuery);
+        const result = await this.dbClient.query(getQuery);
         const income = result.rows[0];
     
         return income;
