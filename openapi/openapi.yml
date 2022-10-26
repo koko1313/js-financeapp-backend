@@ -132,10 +132,10 @@ paths:
                     example: '2022-10-09T13:50:00.000Z'
                   amount:
                     type: number
-                    example: 20.43
+                    example: 2000.85
                   comment:
                     type: string
-                    example: Вечеря
+                    example: Заплата
         '401':
           $ref: '#/paths/~1income~1get/get/responses/401'
         '500':
@@ -282,10 +282,10 @@ paths:
                     example: '2022-10-09T13:50:00.000Z'
                   amount:
                     type: number
-                    example: 2300.2
+                    example: 20.43
                   comment:
                     type: string
-                    example: Заплата
+                    example: Вечеря
         '401':
           $ref: '#/paths/~1income~1get/get/responses/401'
         '500':
@@ -376,24 +376,7 @@ paths:
                   example: my_password_123
       responses:
         '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: object
-                required:
-                  - id
-                  - email
-                  - name
-                properties:
-                  id:
-                    type: string
-                  email:
-                    type: string
-                    example: example@mail.com
-                  name:
-                    type: string
-                    example: Pesho Shvepsa
+          $ref: '#/paths/~1user~1login/post/responses/200'
         '500':
           $ref: '#/paths/~1income~1get/get/responses/500'
   /user/login:
@@ -429,7 +412,6 @@ paths:
                   - id
                   - email
                   - name
-                  - jwtToken
                 properties:
                   id:
                     type: string

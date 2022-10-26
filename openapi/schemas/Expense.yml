@@ -16,7 +16,7 @@ properties:
     example: "2022-10-09T13:50:00.000Z"
   amount:
     type: number
-    example: 2300.20
+    example: 20.43
   comment:
     type: string
-    example: "Заплата"
+    example: "Вечеря"

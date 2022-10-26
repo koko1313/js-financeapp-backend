@@ -21,26 +21,6 @@ post:
               example: "my_password_123"
   responses:
     '200':
-      description: OK
-      content:
-        application/json:
-          schema:
-            type: object
-            required:
-              - id
-              - email
-              - name
-              - jwtToken
-            properties:
-              id:
-                type: string
-              email:
-                type: string
-                example: "example@mail.com"
-              name:
-                type: string
-                example: "Pesho Shvepsa"
-              jwtToken:
-                type: string
+      $ref: '../../responses/SuccessfulLoginResponseBody.yml'
     '500':
       $ref: '../../responses/ErrorResponseBody.yml'
