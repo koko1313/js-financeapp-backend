@@ -56,28 +56,19 @@ paths:
               schema:
                 type: array
                 items:
-                  type: object
-                  required:
-                    - id
-                    - userId
-                    - date
-                    - amount
-                    - comment
-                  properties:
-                    id:
-                      type: string
-                    userId:
-                      type: string
-                    date:
-                      type: string
-                      format: date-time
-                      example: '2022-10-09T13:50:00.000Z'
-                    amount:
-                      type: number
-                      example: 2300.2
-                    comment:
-                      type: string
-                      example: Вечеря
+                  $ref: '#/paths/~1income~1add/post/responses/200/content/application~1json/schema'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - message
+                properties:
+                  message:
+                    type: string
+                    example: Invalid or expired JWT token
         '500':
           description: Error response
           content:
@@ -120,6 +111,33 @@ paths:
       responses:
         '200':
           description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - id
+                  - userId
+                  - date
+                  - amount
+                  - comment
+                properties:
+                  id:
+                    type: string
+                  userId:
+                    type: string
+                  date:
+                    type: string
+                    format: date-time
+                    example: '2022-10-09T13:50:00.000Z'
+                  amount:
+                    type: number
+                    example: 20.43
+                  comment:
+                    type: string
+                    example: Вечеря
+        '401':
+          $ref: '#/paths/~1income~1get/get/responses/401'
         '500':
           $ref: '#/paths/~1income~1get/get/responses/500'
   '/income/update/{id}':
@@ -154,7 +172,9 @@ paths:
                   example: Продадох си телефона
       responses:
         '200':
-          description: OK
+          $ref: '#/paths/~1income~1add/post/responses/200'
+        '401':
+          $ref: '#/paths/~1income~1get/get/responses/401'
         '500':
           $ref: '#/paths/~1income~1get/get/responses/500'
   '/income/delete/{id}':
@@ -174,6 +194,8 @@ paths:
       responses:
         '200':
           description: OK
+        '401':
+          $ref: '#/paths/~1income~1get/get/responses/401'
         '500':
           $ref: '#/paths/~1income~1get/get/responses/500'
   /expense/get:
@@ -204,28 +226,9 @@ paths:
               schema:
                 type: array
                 items:
-                  type: object
-                  required:
-                    - id
-                    - userId
-                    - date
-                    - amount
-                    - comment
-                  properties:
-                    id:
-                      type: string
-                    userId:
-                      type: string
-                    date:
-                      type: string
-                      format: date-time
-                      example: '2022-10-09T13:50:00.000Z'
-                    amount:
-                      type: number
-                      example: 2300.2
-                    comment:
-                      type: string
-                      example: Вечеря
+                  $ref: '#/paths/~1expense~1add/post/responses/200/content/application~1json/schema'
+        '401':
+          $ref: '#/paths/~1income~1get/get/responses/401'
         '500':
           $ref: '#/paths/~1income~1get/get/responses/500'
   /expense/add:
@@ -258,6 +261,33 @@ paths:
       responses:
         '200':
           description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - id
+                  - userId
+                  - date
+                  - amount
+                  - comment
+                properties:
+                  id:
+                    type: string
+                  userId:
+                    type: string
+                  date:
+                    type: string
+                    format: date-time
+                    example: '2022-10-09T13:50:00.000Z'
+                  amount:
+                    type: number
+                    example: 2300.2
+                  comment:
+                    type: string
+                    example: Заплата
+        '401':
+          $ref: '#/paths/~1income~1get/get/responses/401'
         '500':
           $ref: '#/paths/~1income~1get/get/responses/500'
   '/expense/update/{id}':
@@ -292,7 +322,9 @@ paths:
                   example: Гориво
       responses:
         '200':
-          description: OK
+          $ref: '#/paths/~1expense~1add/post/responses/200'
+        '401':
+          $ref: '#/paths/~1income~1get/get/responses/401'
         '500':
           $ref: '#/paths/~1income~1get/get/responses/500'
   '/expense/delete/{id}':
@@ -312,6 +344,8 @@ paths:
       responses:
         '200':
           description: OK
+        '401':
+          $ref: '#/paths/~1income~1get/get/responses/401'
         '500':
           $ref: '#/paths/~1income~1get/get/responses/500'
   /user/register:
@@ -343,6 +377,23 @@ paths:
       responses:
         '200':
           description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - id
+                  - email
+                  - name
+                properties:
+                  id:
+                    type: string
+                  email:
+                    type: string
+                    example: example@mail.com
+                  name:
+                    type: string
+                    example: Pesho Shvepsa
         '500':
           $ref: '#/paths/~1income~1get/get/responses/500'
   /user/login:
@@ -390,39 +441,5 @@ paths:
                     example: Pesho Shvepsa
                   jwtToken:
                     type: string
-        '500':
-          $ref: '#/paths/~1income~1get/get/responses/500'
-  '/user/update/{id}':
-    put:
-      tags:
-        - User
-      summary: Редакторане на потребител
-      description: Редактира потребител
-      operationId: UpdateUser
-      parameters:
-        - in: path
-          name: id
-          required: true
-          schema:
-            type: string
-          description: User id
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                email:
-                  type: string
-                  example: example@mail.com
-                name:
-                  type: string
-                  example: Pesho Shvepsa
-                password:
-                  type: string
-                  example: my_password_123
-      responses:
-        '200':
-          description: OK
         '500':
           $ref: '#/paths/~1income~1get/get/responses/500'

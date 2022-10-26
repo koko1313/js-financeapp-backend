@@ -14,5 +14,7 @@ delete:
   responses:
     '200':
       description: OK
+    '401':
+      $ref: '../../responses/UnauthorizedResponseBody.yml'
     '500':
       $ref: '../../responses/ErrorResponseBody.yml'

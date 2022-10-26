@@ -26,5 +26,22 @@ post:
   responses:
     '200':
       description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - id
+              - email
+              - name
+            properties:
+              id:
+                type: string
+              email:
+                type: string
+                example: "example@mail.com"
+              name:
+                type: string
+                example: "Pesho Shvepsa"
     '500':
       $ref: '../../responses/ErrorResponseBody.yml'

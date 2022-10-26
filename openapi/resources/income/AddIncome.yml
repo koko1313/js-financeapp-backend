@@ -26,6 +26,8 @@ post:
               example: "Заплата"
   responses:
     '200':
-      description: OK
+      $ref: '../../responses/SuccessfulIncomeResponseBody.yml'
+    '401':
+      $ref: '../../responses/UnauthorizedResponseBody.yml'
     '500':
       $ref: '../../responses/ErrorResponseBody.yml'
