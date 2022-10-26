@@ -1,15 +1,16 @@
 import IncomeDAO from '../DAOs/IncomeDAO.js';
-import { mapIncome } from '../utils/mappers.js';
+import { mapIncome, mapIncomes } from '../utils/mappers.js';
 
 const incomeDAO = new IncomeDAO();
 
 export const getIncomes = async (params) => {
     const incomes = await incomeDAO.getIncomesByParams(params);
-    return mapIncome(incomes);
+    return mapIncomes(incomes);
 }
 
 export const addIncome = async (income) => {
-    await incomeDAO.addIncome(income);
+    const addedIncome = await incomeDAO.addIncome(income);
+    return mapIncome(addedIncome);
 }
 
 export const updateIncome = async (id, userId, updatedValues) => {
@@ -23,7 +24,8 @@ export const updateIncome = async (id, userId, updatedValues) => {
         income[key] = updatedValues[key];
     }
 
-    await incomeDAO.updateIncome(income);
+    const updatedIncome = await incomeDAO.updateIncome(income);
+    return mapIncome(updatedIncome);
 }
 
 export const deleteIncome = async (id, userId) => {
@@ -33,5 +35,6 @@ export const deleteIncome = async (id, userId) => {
         throw new Error(`Income with id ${id} was not found for user ${userId}`);
     }
 
-    await incomeDAO.deleteIncome(id);
+    const incomeDeleted = await incomeDAO.deleteIncome(id);
+    return incomeDeleted;
 }

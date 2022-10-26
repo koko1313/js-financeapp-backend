@@ -14,7 +14,8 @@ export const registerUser = async (user) => {
     const hashedPassword = hashPassword(user.password);
     user.password = hashedPassword;
 
-    await userDAO.addUser(user);
+    const registeredUser = await userDAO.addUser(user);
+    return mapUser(registeredUser);
 }
 
 export const loginUser = async (credentials) => {

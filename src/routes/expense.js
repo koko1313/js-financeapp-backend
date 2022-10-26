@@ -30,8 +30,8 @@ router.post('/expense/add', decodeJWTToken, async (req, res) => {
             comment: req.body.comment,
         };
 
-        await addExpense(expense);
-        res.status(200).send();
+        const addedExpense = await addExpense(expense);
+        res.status(200).send(addedExpense);
     } catch (ex) {
         res.status(500).send({ message: ex.message });
     }
@@ -39,23 +39,23 @@ router.post('/expense/add', decodeJWTToken, async (req, res) => {
 
 router.put('/expense/update/:id', decodeJWTToken, async (req, res) => {
     try {
-        const updatedExpense = {};
+        const updatedExpenseData = {};
         const userId = req.user.id;
 
         if (req.body.date) {
-            updatedExpense.date = req.body.date;
+            updatedExpenseData.date = req.body.date;
         }
 
         if (req.body.amount) {
-            updatedExpense.amount = req.body.amount;
+            updatedExpenseData.amount = req.body.amount;
         }
 
         if (req.body.comment) {
-            updatedExpense.comment = req.body.comment;
+            updatedExpenseData.comment = req.body.comment;
         }
 
-        await updateExpense(req.params.id, userId, updatedExpense);
-        res.status(200).send();
+        const updatedExpense = await updateExpense(req.params.id, userId, updatedExpenseData);
+        res.status(200).send(updatedExpense);
     } catch (ex) {
         res.status(500).send({ message: ex.message });
     }

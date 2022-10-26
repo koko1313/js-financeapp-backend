@@ -13,8 +13,8 @@ router.post('/user/register', async (req, res) => {
             password: req.body.password,
         };
 
-        await registerUser(user);
-        res.status(200).send();
+        const registeredUser = await registerUser(user);
+        res.status(200).send(registeredUser);
     } catch (ex) {
         res.status(500).send({ message: ex.message });
     }

@@ -1,5 +1,5 @@
 import ExpenseDAO from '../DAOs/ExpenseDAO.js';
-import { mapExpenses } from '../utils/mappers.js';
+import { mapExpense, mapExpenses } from '../utils/mappers.js';
 
 const expendeDAO = new ExpenseDAO();
 
@@ -9,7 +9,8 @@ export const getExpenses = async (params) => {
 }
 
 export const addExpense = async (expense) => {
-    await expendeDAO.addExpense(expense);
+    const addedExpense = await expendeDAO.addExpense(expense);
+    return mapExpense(addedExpense);
 }
 
 export const updateExpense = async (id, userId, updatedValues) => {
@@ -23,7 +24,8 @@ export const updateExpense = async (id, userId, updatedValues) => {
         expense[key] = updatedValues[key];
     }
 
-    await expendeDAO.updateExpense(expense);
+    const updatedExpense = await expendeDAO.updateExpense(expense);
+    return mapExpense(updatedExpense);
 }
 
 export const deleteExpense = async (id, userId) => {
@@ -33,5 +35,6 @@ export const deleteExpense = async (id, userId) => {
         throw new Error(`Expense with id ${id} was not found for user ${userId}`);
     }
 
-    await expendeDAO.deleteExpense(id);
+    const expenseDeleted = await expendeDAO.deleteExpense(id);
+    return expenseDeleted;
 }

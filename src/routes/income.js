@@ -30,8 +30,8 @@ router.post('/income/add', decodeJWTToken, async (req, res) => {
             comment: req.body.comment,
         };
 
-        await addIncome(income);
-        res.status(200).send();
+        const addedIncome = await addIncome(income);
+        res.status(200).send(addedIncome);
     } catch (ex) {
         res.status(500).send({ message: ex.message });
     }
@@ -39,23 +39,23 @@ router.post('/income/add', decodeJWTToken, async (req, res) => {
 
 router.put('/income/update/:id', decodeJWTToken, async (req, res) => {
     try {
-        const updatedIncome = {};
+        const updatedIncomeData = {};
         const userId = req.user.id;
 
         if (req.body.date) {
-            updatedIncome.date = req.body.date;
+            updatedIncomeData.date = req.body.date;
         }
 
         if (req.body.amount) {
-            updatedIncome.amount = req.body.amount;
+            updatedIncomeData.amount = req.body.amount;
         }
 
         if (req.body.comment) {
-            updatedIncome.comment = req.body.comment;
+            updatedIncomeData.comment = req.body.comment;
         }
 
-        await updateIncome(req.params.id, userId, updatedIncome);
-        res.status(200).send();
+        const updatedIncome = await updateIncome(req.params.id, userId, updatedIncomeData);
+        res.status(200).send(updatedIncome);
     } catch (ex) {
         res.status(500).send({ message: ex.message });
     }

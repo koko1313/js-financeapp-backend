@@ -21,24 +21,31 @@ export default class ExpenseDAO {
         return result.rows;
     }
 
-    addExpense = async (expense) => {
-        const query = queryBuilder(QUERIES.addExpense)(expense);
-        await this.dbClient.query(query);
-    }
-
-    updateExpense = async (expense) => {
-        const query = queryBuilder(QUERIES.updateExpenseById)(expense);
-        await this.dbClient.query(query);
-    }
-
-    deleteExpense = async (id) => {
-        const query = queryBuilder(QUERIES.deleteExpenseById)({ id: id });
-        await this.dbClient.query(query);
-    }
-
     getExpenseByIdAndUserId = async (id, userId) => {
         const getQuery = queryBuilder(QUERIES.getExpenseByIdAndUserId)({ id: id, userId: userId });
         const result = await this.dbClient.query(getQuery);
         return result.rows[0];
+    }
+
+    addExpense = async (expense) => {
+        const query = queryBuilder(QUERIES.addExpense)(expense);
+        const result = await this.dbClient.query(query);
+        if (result.rowCount > 0) {
+            return expense;
+        }
+    }
+
+    updateExpense = async (expense) => {
+        const query = queryBuilder(QUERIES.updateExpenseById)(expense);
+        const result = await this.dbClient.query(query);
+        if (result.rowCount > 0) {
+            return expense;
+        }
+    }
+
+    deleteExpense = async (id) => {
+        const query = queryBuilder(QUERIES.deleteExpenseById)({ id: id });
+        const result = await this.dbClient.query(query);
+        return result.rowCount > 0;
     }
 }
