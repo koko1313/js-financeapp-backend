@@ -1,4 +1,4 @@
-openapi: 3.0.1
+openapi: 3.0.3
 info:
   title: Finance App
   description: Finnance application
@@ -9,7 +9,7 @@ info:
   license:
     name: Apache 2.0
     url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
-  version: 1.0.3
+  version: 1.0.0
 servers:
   - url: 'https://financeapp-be.vercel.app/'
 tags:
