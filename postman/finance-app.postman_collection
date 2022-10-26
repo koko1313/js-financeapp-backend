@@ -79,14 +79,14 @@
 							}
 						},
 						"url": {
-							"raw": "{{baseUrl}}/income/update/67baf0b0-0a3d-4007-8875-1982f260c92b",
+							"raw": "{{baseUrl}}/income/update/7fc19a4a-7ea9-4673-b172-2cdada779049",
 							"host": [
 								"{{baseUrl}}"
 							],
 							"path": [
 								"income",
 								"update",
-								"67baf0b0-0a3d-4007-8875-1982f260c92b"
+								"7fc19a4a-7ea9-4673-b172-2cdada779049"
 							]
 						}
 					},
@@ -98,14 +98,14 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "{{baseUrl}}/income/delete/f5a0ac91-e260-4776-8a5d-0b93f892bd28",
+							"raw": "{{baseUrl}}/income/delete/622c0a19-e2d2-4ad2-bb64-2d22d1486434",
 							"host": [
 								"{{baseUrl}}"
 							],
 							"path": [
 								"income",
 								"delete",
-								"f5a0ac91-e260-4776-8a5d-0b93f892bd28"
+								"622c0a19-e2d2-4ad2-bb64-2d22d1486434"
 							]
 						}
 					},
@@ -122,7 +122,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{baseUrl}}/expense/get?fromDate=2022-10-05T12:00:00.000Z&toDate=2022-10-11T13:00:00.000Z",
+							"raw": "{{baseUrl}}/expense/get?fromDate=2021-10-05T12:00:00.000Z&toDate=2023-10-11T13:00:00.000Z",
 							"host": [
 								"{{baseUrl}}"
 							],
@@ -133,11 +133,11 @@
 							"query": [
 								{
 									"key": "fromDate",
-									"value": "2022-10-05T12:00:00.000Z"
+									"value": "2021-10-05T12:00:00.000Z"
 								},
 								{
 									"key": "toDate",
-									"value": "2022-10-11T13:00:00.000Z"
+									"value": "2023-10-11T13:00:00.000Z"
 								}
 							]
 						}
@@ -178,7 +178,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"date\": \"2022-10-11T12:50:00.000Z\",\r\n  \"amount\": 18.33,\r\n  \"comment\": \"Вечеря\"\r\n}",
+							"raw": "{\r\n  \"date\": \"2022-10-11T12:50:00.000Z\",\r\n  \"amount\": 145.43,\r\n  \"comment\": \"Вечеря\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -186,14 +186,14 @@
 							}
 						},
 						"url": {
-							"raw": "{{baseUrl}}/expense/update/7ddead76-45ee-4ccf-8bc0-44754f95ff73",
+							"raw": "{{baseUrl}}/expense/update/9424ce2c-16ea-44d2-9eeb-5477d4bb1f90",
 							"host": [
 								"{{baseUrl}}"
 							],
 							"path": [
 								"expense",
 								"update",
-								"7ddead76-45ee-4ccf-8bc0-44754f95ff73"
+								"9424ce2c-16ea-44d2-9eeb-5477d4bb1f90"
 							]
 						}
 					},
@@ -205,14 +205,14 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "{{baseUrl}}/expense/delete/8bd68e6c-0418-4003-a9ce-d85fb683bcab",
+							"raw": "{{baseUrl}}/expense/delete/4c50f3cf-e53b-4422-9816-c1303f57c6cc",
 							"host": [
 								"{{baseUrl}}"
 							],
 							"path": [
 								"expense",
 								"delete",
-								"8bd68e6c-0418-4003-a9ce-d85fb683bcab"
+								"4c50f3cf-e53b-4422-9816-c1303f57c6cc"
 							]
 						}
 					},
@@ -272,34 +272,6 @@
 							"path": [
 								"user",
 								"register"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "updateUser",
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n  \"email\": \"example@mail.com\",\r\n  \"name\": \"Pesho Shvepsa\",\r\n  \"password\": \"my_password_123\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{baseUrl}}/user/update/67baf0b0-0a3d-4007-8875-1982f260c92b",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"user",
-								"update",
-								"67baf0b0-0a3d-4007-8875-1982f260c92b"
 							]
 						}
 					},
