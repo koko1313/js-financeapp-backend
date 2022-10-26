@@ -3,9 +3,9 @@ import { mapExpenses } from '../utils/mappers.js';
 
 const expendeDAO = new ExpenseDAO();
 
-export const getExpense = async (params) => {
-    const result = await expendeDAO.getExpenseByParams(params)
-    return mapExpenses(result);
+export const getExpenses = async (params) => {
+    const expenses = await expendeDAO.getExpensesByParams(params)
+    return mapExpenses(expenses);
 }
 
 export const addExpense = async (expense) => {

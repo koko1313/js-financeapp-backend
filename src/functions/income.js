@@ -3,9 +3,9 @@ import { mapIncome } from '../utils/mappers.js';
 
 const incomeDAO = new IncomeDAO();
 
-export const getIncome = async (params) => {
-    const result = await incomeDAO.getIncomeByParams(params);
-    return mapIncome(result);
+export const getIncomes = async (params) => {
+    const incomes = await incomeDAO.getIncomesByParams(params);
+    return mapIncome(incomes);
 }
 
 export const addIncome = async (income) => {

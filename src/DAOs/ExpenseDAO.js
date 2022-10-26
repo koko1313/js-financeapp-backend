@@ -7,7 +7,7 @@ export default class ExpenseDAO {
         this.dbClient = initDbClient();
     }
 
-    getExpenseByParams = async (params) => {
+    getExpensesByParams = async (params) => {
         let queryTemplate = QUERIES.getExpensesByUserId;
     
         // append parameters
@@ -18,7 +18,7 @@ export default class ExpenseDAO {
         const query = queryBuilder(queryTemplate)(params);
     
         const result = await this.dbClient.query(query);
-        return result;
+        return result.rows;
     }
 
     addExpense = async (expense) => {
@@ -39,8 +39,6 @@ export default class ExpenseDAO {
     getExpenseByIdAndUserId = async (id, userId) => {
         const getQuery = queryBuilder(QUERIES.getExpenseByIdAndUserId)({ id: id, userId: userId });
         const result = await this.dbClient.query(getQuery);
-        const expense = result.rows[0];
-    
-        return expense;
+        return result.rows[0];
     }
 }

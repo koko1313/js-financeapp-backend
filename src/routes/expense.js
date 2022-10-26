@@ -1,6 +1,6 @@
 import express from 'express';
 import { v4 as uuid } from 'uuid';
-import { addExpense, deleteExpense, getExpense, updateExpense } from '../functions/expense.js';
+import { addExpense, deleteExpense, getExpenses, updateExpense } from '../functions/expense.js';
 import { decodeJWTToken } from '../middleware/jwtToken.js';
 
 const router = express.Router();
@@ -13,7 +13,7 @@ router.get('/expense/get', decodeJWTToken, async (req, res) => {
             toDate: req.query.toDate,
         };
 
-        const result = await getExpense(params); 
+        const result = await getExpenses(params); 
         res.status(200).send(result);
     } catch (ex) {
         res.status(500).send({ message: ex.message });

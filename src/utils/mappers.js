@@ -1,7 +1,7 @@
-export const mapExpenses = (dbResponse) => {
+export const mapExpenses = (dbExpenses) => {
     const expenses = [];
 
-    for(const expense of dbResponse.rows) {
+    for(const expense of dbExpenses) {
         expenses.push({
             id: expense.id,
             userId: expense.user_id,
@@ -14,10 +14,10 @@ export const mapExpenses = (dbResponse) => {
     return expenses;
 }
 
-export const mapIncome = (dbResponse) => {
+export const mapIncome = (dbIncomes) => {
     const incomes = [];
 
-    for(const income of dbResponse.rows) {
+    for(const income of dbIncomes) {
         incomes.push({
             id: income.id,
             userId: income.user_id,

@@ -7,7 +7,7 @@ export default class IncomeDAO {
         this.dbClient = initDbClient();
     }
 
-    getIncomeByParams = async (params) => {
+    getIncomesByParams = async (params) => {
         let queryTemplate = QUERIES.getIncomesByUserId;
     
         // append parameters
@@ -18,7 +18,7 @@ export default class IncomeDAO {
         const query = queryBuilder(queryTemplate)(params);
     
         const result = await this.dbClient.query(query);
-        return result;
+        return result.rows;
     }
 
     addIncome = async (income) => {
@@ -39,8 +39,6 @@ export default class IncomeDAO {
     getIncomeByIdAndUserId = async (id, userId) => {
         const getQuery = queryBuilder(QUERIES.getIncomeByIdAndUserId)({ id: id, userId: userId });
         const result = await this.dbClient.query(getQuery);
-        const income = result.rows[0];
-    
-        return income;
+        return result.rows[0];
     }
 }
