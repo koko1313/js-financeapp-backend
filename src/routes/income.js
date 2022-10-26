@@ -1,7 +1,7 @@
 import express from 'express';
 import { v4 as uuid } from 'uuid';
 import { addIncome, deleteIncome, getIncome, updateIncome } from '../functions/income.js';
-import { decodeJWTToken } from '../utils/jwtToken.js';
+import { decodeJWTToken } from '../middleware/jwtToken.js';
 
 const router = express.Router();
 
@@ -21,15 +21,15 @@ router.get('/income/get', decodeJWTToken, async (req, res) => {
 });
 
 router.post('/income/add', decodeJWTToken, async (req, res) => {
-    const income = {
-        id: uuid(),
-        userId: req.user.id,
-        date: req.body.date,
-        amount: req.body.amount,
-        comment: req.body.comment,
-    };
-
     try {
+        const income = {
+            id: uuid(),
+            userId: req.user.id,
+            date: req.body.date,
+            amount: req.body.amount,
+            comment: req.body.comment,
+        };
+
         await addIncome(income);
         res.status(200).send();
     } catch (ex) {
@@ -38,22 +38,22 @@ router.post('/income/add', decodeJWTToken, async (req, res) => {
 });
 
 router.put('/income/update/:id', decodeJWTToken, async (req, res) => {
-    const updatedIncome = {};
-    const userId = req.user.id;
-
-    if (req.body.date) {
-        updatedIncome.date = req.body.date;
-    }
-
-    if (req.body.amount) {
-        updatedIncome.amount = req.body.amount;
-    }
-
-    if (req.body.comment) {
-        updatedIncome.comment = req.body.comment;
-    }
-
     try {
+        const updatedIncome = {};
+        const userId = req.user.id;
+
+        if (req.body.date) {
+            updatedIncome.date = req.body.date;
+        }
+
+        if (req.body.amount) {
+            updatedIncome.amount = req.body.amount;
+        }
+
+        if (req.body.comment) {
+            updatedIncome.comment = req.body.comment;
+        }
+
         await updateIncome(req.params.id, userId, updatedIncome);
         res.status(200).send();
     } catch (ex) {
@@ -62,10 +62,10 @@ router.put('/income/update/:id', decodeJWTToken, async (req, res) => {
 });
 
 router.delete('/income/delete/:id', decodeJWTToken, async (req, res) => {
-    const id = req.params.id;
-    const userId = req.user.id;
-
     try {
+        const id = req.params.id;
+        const userId = req.user.id;
+
         await deleteIncome(id, userId); 
         res.status(200).send();
     } catch (ex) {

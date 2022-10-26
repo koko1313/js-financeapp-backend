@@ -24,15 +24,15 @@ export const addExpense = async (expense) => {
     await dbClient.query(query);
 }
 
-export const updateExpense = async (id, userId, updatedExpense) => {
+export const updateExpense = async (id, userId, updatedValues) => {
     const expense = await getExpenseByIdAndUserId(id, userId);
 
     if (!expense) {
         throw new Error(`Expense with id ${id} was not found for user ${userId}`);
     }
     
-    for(const key of Object.keys(updatedExpense)) {
-        expense[key] = updatedExpense[key];
+    for(const key of Object.keys(updatedValues)) {
+        expense[key] = updatedValues[key];
     }
 
     const updateQuery = queryBuilder(QUERIES.updateExpenseById)(expense);

@@ -21,10 +21,12 @@ tags:
     description: Provides a set of functions to manage the user data and session
 components:
   securitySchemes:
-    OIDC:
+    bearerAuth:
       type: http
       scheme: bearer
       bearerFormat: JWT
+security:
+  - bearerAuth: []
 paths:
   /income/get:
     get:

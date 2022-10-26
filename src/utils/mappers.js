@@ -37,9 +37,9 @@ export const mapUser = (dbResponse) => {
 
     if (dbUser) {
         user = {
-            id: dbUser?.id,
-            email: dbUser?.email,
-            name: dbUser?.name,
+            id: dbUser.id,
+            email: dbUser.email,
+            name: dbUser.name,
         };
     }
 

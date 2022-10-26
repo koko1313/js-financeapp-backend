@@ -26,10 +26,13 @@ tags:
 
 components:
   securitySchemes:
-    OIDC:
+    bearerAuth:
       type: http
       scheme: bearer
       bearerFormat: JWT
+
+security:
+  - bearerAuth: []
 
 paths:
   '/income/get':

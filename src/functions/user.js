@@ -1,7 +1,7 @@
 import { QUERIES } from "../utils/queries.js";
 import { pg as queryBuilder } from 'yesql';
 import { initDbClient } from "../../database/dbClient.js";
-import { generateJWTToken } from "../utils/jwtToken.js";
+import { generateJWTToken } from "../middleware/jwtToken.js";
 import { mapUser } from "../utils/mappers.js";
 import crypto from 'crypto';
 
