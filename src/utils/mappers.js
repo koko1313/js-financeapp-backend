@@ -1,7 +1,7 @@
 export const mapExpense = (expense) => {
     return {
         id: expense.id,
-        userId: expense.user_id,
+        userId: expense.user_id ?? expense.userId,
         date: expense.date,
         amount: parseFloat(expense.amount),
         comment: expense.comment,
@@ -21,7 +21,7 @@ export const mapExpenses = (dbExpenses) => {
 export const mapIncome = (income) => {
     return {
         id: income.id,
-        userId: income.user_id,
+        userId: income.user_id ?? income.userId,
         date: income.date,
         amount: parseFloat(income.amount),
         comment: income.comment,
