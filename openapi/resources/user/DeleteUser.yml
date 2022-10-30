@@ -1,0 +1,18 @@
+delete:
+  tags:
+    - User
+  summary: Изтриване на потребител
+  description: Изтрива потребител. Само администратори могат да използват този ендпойнт
+  operationId: DeleteUser
+  parameters:
+    - in: path
+      name: id
+      required: true
+      schema:
+        type: string
+      description: User id
+  responses:
+    '200':
+      description: OK
+    '500':
+      $ref: '../../responses/ErrorResponseBody.yml'

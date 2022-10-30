@@ -59,3 +59,5 @@ paths:
     $ref: './resources/user/RegisterUser.yml'
   '/user/login':
     $ref: './resources/user/LoginUser.yml'
+  '/user/delete/{id}':
+    $ref: './resources/user/DeleteUser.yml'

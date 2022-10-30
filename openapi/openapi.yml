@@ -449,3 +449,22 @@ paths:
                     type: string
         '500':
           $ref: '#/paths/~1user~1get/get/responses/500'
+  '/user/delete/{id}':
+    delete:
+      tags:
+        - User
+      summary: Изтриване на потребител
+      description: Изтрива потребител. Само администратори могат да използват този ендпойнт
+      operationId: DeleteUser
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+          description: User id
+      responses:
+        '200':
+          description: OK
+        '500':
+          $ref: '#/paths/~1user~1get/get/responses/500'

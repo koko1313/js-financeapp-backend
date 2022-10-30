@@ -233,7 +233,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"email\": \"example10@mail.com\",\r\n  \"password\": \"my_password_123\"\r\n}",
+							"raw": "",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -287,7 +287,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"email\": \"example10@mail.com\",\r\n  \"name\": \"Pesho Shvepsa\",\r\n  \"password\": \"my_password_123\"\r\n}",
+							"raw": "{\r\n  \"email\": \"example11@mail.com\",\r\n  \"name\": \"Gosho Shkafa\",\r\n  \"password\": \"my_password_123\",\r\n  \"isAdmin\": false\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -302,6 +302,34 @@
 							"path": [
 								"user",
 								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteUser",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/user/delete/38fc2501-3a38-460d-99a9-5a5291b37abe",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"user",
+								"delete",
+								"38fc2501-3a38-460d-99a9-5a5291b37abe"
 							]
 						}
 					},
