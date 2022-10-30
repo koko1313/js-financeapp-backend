@@ -3,7 +3,7 @@ CREATE TABLE "user" (
     "email" text,
     "name" text,
     "password" text,
-    "isAdmin" boolean
+    "is_admin" boolean
 );
 
 CREATE TABLE "income" (

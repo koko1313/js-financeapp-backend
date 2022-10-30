@@ -11,8 +11,8 @@ export const QUERIES = {
     updateIncomeById: 'UPDATE "income" SET date = :date, amount = :amount, comment = :comment WHERE id = :id',
     deleteIncomeById: 'DELETE FROM "income" WHERE id = :id',
     
-    getUsers: 'SELECT id, email, name FROM "user"',
-    getUserByEmail: 'SELECT id, email, name FROM "user" WHERE email = :email',
-    getUserByEmailAndPassword: 'SELECT id, email, name FROM "user" WHERE email = :email AND password = :password',
-    addUser: 'INSERT INTO "user" (id, email, name, password) VALUES (:id, :email, :name, :password)',
+    getUsers: 'SELECT id, email, name, is_admin FROM "user"',
+    getUserByEmail: 'SELECT id, email, name, is_admin FROM "user" WHERE email = :email',
+    getUserByEmailAndPassword: 'SELECT id, email, name, is_admin FROM "user" WHERE email = :email AND password = :password',
+    addUser: 'INSERT INTO "user" (id, email, name, password, is_admin) VALUES (:id, :email, :name, :password, :isAdmin)',
 };

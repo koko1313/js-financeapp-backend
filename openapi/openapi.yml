@@ -392,6 +392,8 @@ paths:
                 password:
                   type: string
                   example: my_password_123
+                isAdmin:
+                  type: boolean
       responses:
         '200':
           $ref: '#/paths/~1user~1login/post/responses/200'
@@ -430,6 +432,7 @@ paths:
                   - id
                   - email
                   - name
+                  - isAdmin
                 properties:
                   id:
                     type: string
@@ -439,6 +442,9 @@ paths:
                   name:
                     type: string
                     example: Pesho Shvepsa
+                  isAdmin:
+                    type: boolean
+                    example: false
                   jwtToken:
                     type: string
         '500':

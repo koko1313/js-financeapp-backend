@@ -23,6 +23,8 @@ post:
             password:
               type: string
               example: "my_password_123"
+            isAdmin:
+              type: boolean
   responses:
     '200':
       $ref: '../../responses/SuccessfulLoginResponseBody.yml'

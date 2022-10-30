@@ -20,6 +20,7 @@ router.post('/user/register', async (req, res) => {
             email: req.body.email,
             name: req.body.name,
             password: req.body.password,
+            isAdmin: req.body.isAdmin ?? false
         };
 
         const registeredUser = await registerUser(user);

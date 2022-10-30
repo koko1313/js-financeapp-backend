@@ -3,6 +3,7 @@ required:
   - id
   - email
   - name
+  - isAdmin
 properties:
   id:
     type: string
@@ -12,5 +13,8 @@ properties:
   name:
     type: string
     example: "Pesho Shvepsa"
+  isAdmin:
+    type: boolean
+    example: false
   jwtToken:
     type: string
