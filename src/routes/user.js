@@ -1,6 +1,6 @@
 import express from 'express';
 import { v4 as uuid } from 'uuid';
-import { getUsers, loginUser, registerUser } from '../functions/user.js';
+import { deleteUser, getUsers, loginUser, registerUser } from '../functions/user.js';
 import { decodeJWTToken } from '../middleware/jwtToken.js';
 
 const router = express.Router();
@@ -44,6 +44,21 @@ router.post('/user/login', async (req, res) => {
 
         const loggedUser = await loginUser(credentials);
         res.status(200).send(loggedUser);
+    } catch (ex) {
+        res.status(500).send({ message: ex.message });
+    }
+});
+
+router.delete('/user/delete/:id', decodeJWTToken, async (req, res) => {
+    try {
+        if (req.user.isAdmin) {
+            const id = req.params.id;
+
+            await deleteUser(id); 
+            res.status(200).send();
+        } else {
+            res.status(403).send({ message: "Forbidden" })
+        }
     } catch (ex) {
         res.status(500).send({ message: ex.message });
     }

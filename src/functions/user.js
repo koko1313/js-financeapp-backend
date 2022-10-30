@@ -39,3 +39,8 @@ export const loginUser = async (credentials) => {
 
     return mapUser(mappedUser, jwtToken); // map the user again to attach the jwt token
 }
+
+export const deleteUser = async (id) => {
+    const userDeleted = await userDAO.deleteUser(id);
+    return userDeleted;
+}

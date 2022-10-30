@@ -15,4 +15,5 @@ export const QUERIES = {
     getUserByEmail: 'SELECT id, email, name, is_admin FROM "user" WHERE email = :email',
     getUserByEmailAndPassword: 'SELECT id, email, name, is_admin FROM "user" WHERE email = :email AND password = :password',
     addUser: 'INSERT INTO "user" (id, email, name, password, is_admin) VALUES (:id, :email, :name, :password, :isAdmin)',
+    deleteUserById: 'DELETE FROM "user" WHERE id = :id',
 };

@@ -32,4 +32,10 @@ export default class UserDAO {
             return user;
         }
     }
+
+    deleteUser = async (id) => {
+        const query = queryBuilder(QUERIES.deleteUserById)({ id: id });
+        const result = await this.dbClient.query(query);
+        return result.rowCount > 0;
+    }
 }
