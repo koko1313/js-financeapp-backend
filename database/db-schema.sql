@@ -2,7 +2,8 @@ CREATE TABLE "user" (
     "id" uuid NOT NULL PRIMARY KEY,
     "email" text,
     "name" text,
-    "password" text
+    "password" text,
+    "isAdmin" boolean
 );
 
 CREATE TABLE "income" (
