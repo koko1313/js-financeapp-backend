@@ -43,7 +43,7 @@ export const mapUser = (user, jwtToken) => {
         id: user.id,
         email: user.email,
         name: user.name,
-        isAdmin: user.is_admin,
+        isAdmin: user.is_admin ?? user.isAdmin,
         jwtToken: jwtToken,
     };
 }

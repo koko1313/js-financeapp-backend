@@ -33,7 +33,9 @@ export const loginUser = async (credentials) => {
         throw new Error("User with these credentials was not found");
     }
 
-    const jwtToken = generateJWTToken(user);
+    const mappedUser = mapUser(user); // map the user from db to user format that we want from our side
 
-    return mapUser(user, jwtToken);
+    const jwtToken = generateJWTToken(mappedUser);
+
+    return mapUser(mappedUser, jwtToken); // map the user again to attach the jwt token
 }

@@ -343,7 +343,7 @@ paths:
       tags:
         - User
       summary: Взимане на всички потребители
-      description: Връща всички потребители
+      description: Връща всички потребители. Само администратори могат да използват този ендпойнт
       operationId: GetUser
       responses:
         '200':
