@@ -1,0 +1,11 @@
+get:
+  tags:
+    - User
+  summary: Взимане на всички потребители
+  description: Връща всички потребители
+  operationId: GetUser
+  responses:
+    '200':
+      $ref: '../../responses/SuccessfulUserGetResponseBody.yml'
+    '500':
+      $ref: '../../responses/ErrorResponseBody.yml'

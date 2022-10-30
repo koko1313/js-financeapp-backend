@@ -70,17 +70,7 @@ paths:
                     type: string
                     example: Invalid or expired JWT token
         '500':
-          description: Error response
-          content:
-            application/json:
-              schema:
-                type: object
-                required:
-                  - message
-                properties:
-                  message:
-                    type: string
-                    description: description of the error
+          $ref: '#/paths/~1user~1get/get/responses/500'
   /income/add:
     post:
       tags:
@@ -139,7 +129,7 @@ paths:
         '401':
           $ref: '#/paths/~1income~1get/get/responses/401'
         '500':
-          $ref: '#/paths/~1income~1get/get/responses/500'
+          $ref: '#/paths/~1user~1get/get/responses/500'
   '/income/update/{id}':
     put:
       tags:
@@ -176,7 +166,7 @@ paths:
         '401':
           $ref: '#/paths/~1income~1get/get/responses/401'
         '500':
-          $ref: '#/paths/~1income~1get/get/responses/500'
+          $ref: '#/paths/~1user~1get/get/responses/500'
   '/income/delete/{id}':
     delete:
       tags:
@@ -197,7 +187,7 @@ paths:
         '401':
           $ref: '#/paths/~1income~1get/get/responses/401'
         '500':
-          $ref: '#/paths/~1income~1get/get/responses/500'
+          $ref: '#/paths/~1user~1get/get/responses/500'
   /expense/get:
     get:
       tags:
@@ -230,7 +220,7 @@ paths:
         '401':
           $ref: '#/paths/~1income~1get/get/responses/401'
         '500':
-          $ref: '#/paths/~1income~1get/get/responses/500'
+          $ref: '#/paths/~1user~1get/get/responses/500'
   /expense/add:
     post:
       tags:
@@ -289,7 +279,7 @@ paths:
         '401':
           $ref: '#/paths/~1income~1get/get/responses/401'
         '500':
-          $ref: '#/paths/~1income~1get/get/responses/500'
+          $ref: '#/paths/~1user~1get/get/responses/500'
   '/expense/update/{id}':
     put:
       tags:
@@ -326,7 +316,7 @@ paths:
         '401':
           $ref: '#/paths/~1income~1get/get/responses/401'
         '500':
-          $ref: '#/paths/~1income~1get/get/responses/500'
+          $ref: '#/paths/~1user~1get/get/responses/500'
   '/expense/delete/{id}':
     delete:
       tags:
@@ -347,7 +337,35 @@ paths:
         '401':
           $ref: '#/paths/~1income~1get/get/responses/401'
         '500':
-          $ref: '#/paths/~1income~1get/get/responses/500'
+          $ref: '#/paths/~1user~1get/get/responses/500'
+  /user/get:
+    get:
+      tags:
+        - User
+      summary: Взимане на всички потребители
+      description: Връща всички потребители
+      operationId: GetUser
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/paths/~1user~1login/post/responses/200/content/application~1json/schema'
+        '500':
+          description: Error response
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - message
+                properties:
+                  message:
+                    type: string
+                    description: description of the error
   /user/register:
     post:
       tags:
@@ -378,7 +396,7 @@ paths:
         '200':
           $ref: '#/paths/~1user~1login/post/responses/200'
         '500':
-          $ref: '#/paths/~1income~1get/get/responses/500'
+          $ref: '#/paths/~1user~1get/get/responses/500'
   /user/login:
     post:
       tags:
@@ -424,4 +442,4 @@ paths:
                   jwtToken:
                     type: string
         '500':
-          $ref: '#/paths/~1income~1get/get/responses/500'
+          $ref: '#/paths/~1user~1get/get/responses/500'
