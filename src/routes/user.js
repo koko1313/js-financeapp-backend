@@ -1,8 +1,17 @@
 import express from 'express';
 import { v4 as uuid } from 'uuid';
-import { loginUser, registerUser } from '../functions/user.js';
+import { getUsers, loginUser, registerUser } from '../functions/user.js';
 
 const router = express.Router();
+
+router.get('/user/get', async (req, res) => {
+    try {
+        const users = await getUsers();
+        res.status(200).send(users);
+    } catch (ex) {
+        res.status(500).send({ message: ex.message });
+    }
+});
 
 router.post('/user/register', async (req, res) => {
     try {

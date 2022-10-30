@@ -46,3 +46,13 @@ export const mapUser = (user, jwtToken) => {
         jwtToken: jwtToken,
     };
 }
+
+export const mapUsers = (dbUsers) => {
+    const users = [];
+
+    for (const user of dbUsers) {
+        users.push(mapUser(user));
+    }
+
+    return users;
+}

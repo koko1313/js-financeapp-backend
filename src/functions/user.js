@@ -1,9 +1,14 @@
 import { generateJWTToken } from "../middleware/jwtToken.js";
-import { mapUser } from "../utils/mappers.js";
+import { mapUser, mapUsers } from "../utils/mappers.js";
 import UserDAO from "../DAOs/UserDAO.js";
 import { hashPassword } from "../utils/utils.js";
 
 const userDAO = new UserDAO();
+
+export const getUsers = async () => {
+    const users = await userDAO.getUsers();
+    return mapUsers(users);
+}
 
 export const registerUser = async (user) => {
     const existingUser = await userDAO.getUserByEmail(user.email);

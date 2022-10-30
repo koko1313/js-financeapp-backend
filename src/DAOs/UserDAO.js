@@ -7,6 +7,12 @@ export default class UserDAO {
         this.dbClient = initDbClient();
     }
 
+    getUsers = async () => {
+        const query = queryBuilder(QUERIES.getUsers)();
+        const result = await this.dbClient.query(query);
+        return result.rows;
+    }
+
     getUserByEmail = async (email) => {
         const query = queryBuilder(QUERIES.getUserByEmail)({ email: email });
         const result = await this.dbClient.query(query);
