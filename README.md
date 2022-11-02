@@ -30,6 +30,10 @@
 - **OpenAPI (Swagger)** - използвахме OpenAPI за да опишем ендпойнтите, които backend-а предоставя
 - **Postman** - използвахме Postman докато разработваме и тестваме ендпойнтите
 
+### Техническа детайли и инфрмация за желаещите да използват backend-а
+- OpenAPI може да намерите [тук](openapi/openapi.yml)
+- Postman колекция може да намерите [тук](postman)
+
 ### Другите проекти
 - [Backoffice](https://github.com/koko1313/react-financeapp-backoffice)
 - [Frontend на Vanilla JavaScript](https://github.com/Dimcho28/js-financeapp-frontend)
